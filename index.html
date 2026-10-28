@@ -1,0 +1,1084 @@
+<!doctype html>
+<!-- Killian's Vault: copied from Joey's getpoppy.ai/joey/vault (itself a copy of prompt-library.html in Naz-Qazi/poppy-lp-v2), 2026-10-28.
+     Lives in killianward8-lab/vault on GitHub Pages. Edits here are Killian's only. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Poppy Vault · Killian</title>
+<meta name="description" content="Everything you need to win with Poppy: the prompts we use with clients, the best videos, straight answers, template boards and a direct line to Killian.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="The Poppy Vault">
+<meta property="og:description" content="The prompts, videos, answers and templates we use with every client. Plus a direct line to Killian.">
+<meta property="og:image" content="https://killianward8-lab.github.io/vault/assets/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://killianward8-lab.github.io/vault/assets/og.jpg">
+<link rel="icon" href="assets/poppy-mascot-hd.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- 🔐 THE POPPY VAULT (Mo 2026-10-01): Mo's resource site for clients, the onboarding bonus.
+     Prompts (the 18 we use on calls) · Videos (Mo's library, every id checked via oembed) · Answers (from the help center) ·
+     Template boards · Help center · Level up · Talk to Mo. Public by link, noindex. No client data on this page. -->
+<style>
+:root{--bg:#0A0912;--s1:#13111F;--s2:#1B1830;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);--ink:#F5F3FF;--soft:#CFCBE6;--mute:#8F8AAE;
+  --acc:#9D8CFF;--acc2:#C4B8FF;--gold:#F5C64F;--ok:#4ADE97;--pink:#FF8FC7;--disp:'Space Grotesk',Inter,sans-serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:radial-gradient(1200px 600px at 50% -220px,rgba(157,140,255,.22),transparent 70%),radial-gradient(800px 500px at 100% 30%,rgba(245,198,79,.06),transparent 70%),var(--bg);
+  color:var(--ink);font:16px/1.55 Inter,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+/* hero */
+.top{display:flex;align-items:center;gap:10px;padding:22px 0;font:700 15px var(--disp)}
+.top img{width:30px;height:30px}
+.hero{text-align:center;padding:48px 0 30px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:99px;font:700 12px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:rgba(245,198,79,.08);border:1px solid rgba(245,198,79,.3)}
+.hero h1{margin:18px auto 14px;max-width:820px;font:700 clamp(38px,6vw,68px)/1.02 var(--disp);letter-spacing:-.035em}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#C4B8FF,#9D8CFF 40%,#F5C64F);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin:0 auto;max-width:600px;color:var(--soft);font-size:18px}
+.how{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:28px 0 0}
+.how span{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;background:var(--s1);border:1px solid var(--line);font:600 14px Inter;color:var(--soft)}
+.how b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--acc);color:#120F22;font:800 12px Inter}
+/* filters */
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:14px 0;margin:26px 0 8px;background:linear-gradient(180deg,var(--bg) 70%,transparent)}
+.bar button{height:36px;padding:0 15px;border-radius:99px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--soft);font:600 13.5px Inter;cursor:pointer;transition:all .15s}
+.bar button:hover{color:var(--ink);border-color:rgba(157,140,255,.5)}
+.bar button.on{color:#120F22;background:var(--ink);border-color:var(--ink)}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:10px 0 60px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.card{display:flex;flex-direction:column;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));border:1px solid var(--line);overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);border-color:rgba(157,140,255,.35);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.card.hide{display:none}
+.pv{position:relative;height:230px;padding:18px;background:radial-gradient(500px 220px at 30% 0%,var(--tint,rgba(157,140,255,.18)),transparent 70%),#0E0C1A;border-bottom:1px solid var(--line);overflow:hidden}
+.pv{display:flex;flex-direction:column;justify-content:center}
+.slides{justify-content:center}
+.pv:after{content:"";position:absolute;left:0;right:0;bottom:0;height:46px;background:linear-gradient(180deg,transparent,#0E0C1A)}
+.body{display:flex;flex-direction:column;gap:10px;padding:20px 22px 22px;flex:1}
+.meta{display:flex;align-items:center;gap:8px}
+.tag{padding:3px 10px;border-radius:99px;font:700 11px Inter;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2);background:rgba(157,140,255,.1);border:1px solid rgba(157,140,255,.25)}
+.tag.top{color:#16121F;background:#F5C64F;border-color:#F5C64F}
+.num{margin-left:auto;font:700 12px Inter;color:var(--mute)}
+.card h3{margin:0;font:700 22px/1.2 var(--disp);letter-spacing:-.02em}
+.card .what{margin:0;color:var(--soft);font-size:15px}
+.card .where{margin:0;color:var(--mute);font-size:13px}
+.card .where b{color:var(--soft);font-weight:600}
+details{margin-top:auto;border-radius:14px;background:rgba(0,0,0,.25);border:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:11px 14px;font:600 13.5px Inter;color:var(--soft);display:flex;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"＋";margin-left:auto;color:var(--mute)}details[open] summary:after{content:"−"}
+pre{margin:0;padding:0 14px 14px;white-space:pre-wrap;font:500 13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:#DCD8F2}
+pre mark{background:rgba(245,198,79,.15);color:var(--gold);border-radius:4px;padding:0 3px}
+.copy{display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border:0;border-radius:13px;cursor:pointer;font:700 15px Inter;color:#120F22;background:linear-gradient(180deg,#B7A8FF,#8B78FF);box-shadow:0 8px 24px rgba(139,120,255,.35);transition:transform .12s,filter .12s}
+.copy:hover{filter:brightness(1.07)}.copy:active{transform:scale(.98)}
+.copy.done{background:linear-gradient(180deg,#6BEBB0,#36C985);box-shadow:0 8px 24px rgba(74,222,151,.3)}
+/* previews: tiny mock outputs */
+.mini{position:relative;z-index:1;display:flex;flex-direction:column;gap:7px}
+.chat{align-self:flex-end;max-width:78%;padding:8px 12px;border-radius:14px 14px 4px 14px;background:var(--acc);color:#120F22;font:600 12px/1.4 Inter}
+.reply{padding:10px 12px;border-radius:14px 14px 14px 4px;background:var(--s2);border:1px solid var(--line);font:500 12px/1.45 Inter;color:var(--soft)}
+.hk{display:flex;gap:9px;align-items:flex-start;padding:8px 11px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid var(--line);font:600 12.5px/1.35 Inter}
+.hk i{font-style:normal;flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:rgba(245,198,79,.15);color:var(--gold);font:800 11px Inter}
+.hk.best{border-color:rgba(245,198,79,.45);background:rgba(245,198,79,.06)}
+.lbl{font:800 10px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.scr{padding:12px 14px;border-radius:12px;background:#151229;border:1px solid var(--line);font:500 12.5px/1.6 Inter;color:var(--soft)}
+.scr b{color:var(--gold);font:800 10px Inter;letter-spacing:.1em;margin-right:6px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal div{height:34px;border-radius:7px;background:rgba(255,255,255,.04);border:1px solid var(--line);font:700 9.5px/1 Inter;color:var(--mute);padding:5px}
+.cal div.r{background:rgba(157,140,255,.18);border-color:rgba(157,140,255,.4);color:var(--acc2)}
+.cal div.c{background:rgba(255,143,199,.14);border-color:rgba(255,143,199,.35);color:var(--pink)}
+.cal div.s{background:rgba(74,222,151,.12);border-color:rgba(74,222,151,.3);color:var(--ok)}
+.slides{display:flex;gap:9px}
+.slide{flex:none;width:118px;height:148px;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;font:800 13px/1.15 var(--disp);color:#120F22}
+.slide small{font:700 9px Inter;opacity:.7}
+.score{display:grid;grid-template-columns:auto 1fr auto;gap:8px 10px;align-items:center;font:600 12px Inter;color:var(--soft)}
+.score .b{height:7px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}.score .b i{display:block;height:100%;border-radius:99px}
+.vid{display:flex;gap:9px;align-items:center;padding:7px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.vid .th{flex:none;width:42px;height:54px;border-radius:7px;background:linear-gradient(160deg,#3B2F7A,#18142E);display:grid;place-items:center;color:#fff;font-size:13px}
+.vid b{display:block;font:700 12px Inter}.vid span{font:600 11px Inter;color:var(--ok)}
+.dm{display:flex;flex-direction:column;gap:6px}
+.dm .them{align-self:flex-start;max-width:75%;padding:7px 11px;border-radius:14px 14px 14px 4px;background:#2A2640;font:500 12px Inter;color:var(--soft)}
+.dm .you{align-self:flex-end;max-width:80%;padding:7px 11px;border-radius:14px 14px 4px 14px;background:#2F7BFF;font:500 12px Inter;color:#fff}
+.page{border-radius:12px;background:#F7F5FF;color:#120F22;padding:14px;display:flex;flex-direction:column;gap:7px}
+.page .h{font:800 15px/1.15 var(--disp);letter-spacing:-.01em}.page .s{font:500 11px Inter;color:#555}
+.page .btn{align-self:flex-start;padding:6px 12px;border-radius:8px;background:#7C5CFF;color:#fff;font:700 11px Inter}
+.ideas{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ideas div{padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid var(--line);font:600 11.5px/1.3 Inter;color:var(--soft)}
+.ideas div:before{content:"💡 "}
+footer{padding:30px 0 50px;text-align:center;color:var(--mute);font-size:14px}
+footer a{color:var(--acc2);text-decoration:none}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);opacity:0;padding:11px 18px;border-radius:12px;background:#1E1B33;border:1px solid var(--line2);font:600 14px Inter;transition:all .25s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:600px){.hero{padding-top:28px}.pv{height:auto;min-height:200px;padding:16px}.pv:after{display:none}.slide{width:96px;height:124px}.bar{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}.bar::-webkit-scrollbar{display:none}.bar button{flex:none}}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:#07060E;overflow-x:hidden}
+.aur{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.aur i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
+.aur i:nth-child(1){width:620px;height:620px;left:-160px;top:-220px;background:#5B3FFF}
+.aur i:nth-child(2){width:520px;height:520px;right:-140px;top:120px;background:#B23AA8;opacity:.32;animation-duration:28s}
+.aur i:nth-child(3){width:460px;height:460px;left:30%;top:900px;background:#F5C64F;opacity:.10;animation-duration:34s}
+@keyframes drift{to{transform:translate(80px,60px) scale(1.12)}}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* nav */
+.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);background:rgba(7,6,14,.62);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font:700 16px var(--disp);text-decoration:none;white-space:nowrap}
+.brand img{width:30px;height:30px}.brand small{font:600 12px Inter;color:var(--mute)}
+.links{display:flex;gap:2px;margin:0 auto;overflow-x:auto;scrollbar-width:none}.links::-webkit-scrollbar{display:none}
+.links a{padding:8px 12px;border-radius:10px;font:600 13.5px Inter;color:var(--mute);text-decoration:none;white-space:nowrap;transition:all .15s}
+.links a:hover,.links a.on{color:var(--ink);background:rgba(255,255,255,.06)}
+.cta{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border-radius:11px;font:700 13.5px Inter;color:#120F22;background:linear-gradient(180deg,#FFE08A,#F5C64F);text-decoration:none;white-space:nowrap;box-shadow:0 8px 24px rgba(245,198,79,.25)}
+@media(max-width:900px){.links{display:none}.brand small{display:none}}
+/* hero */
+.vhero{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center;padding:70px 0 40px}
+.vhero h1{margin:18px 0 16px;font:700 clamp(42px,6.4vw,82px)/.98 var(--disp);letter-spacing:-.045em}
+.vhero h1 em{font-style:normal;background:linear-gradient(90deg,#C4B8FF,#9D8CFF 35%,#FF8FC7 65%,#F5C64F);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:shine 8s linear infinite}
+@keyframes shine{to{background-position:200% 0}}
+.vhero p.lead{margin:0;max-width:560px;color:var(--soft);font-size:19px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.stat{padding:12px 16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--line);min-width:110px}
+.stat b{display:block;font:700 30px/1 var(--disp);letter-spacing:-.03em}.stat span{font:600 12.5px Inter;color:var(--mute)}
+.mo{position:relative;padding:26px;border-radius:26px;background:linear-gradient(160deg,rgba(157,140,255,.16),rgba(255,255,255,.03) 50%);border:1px solid rgba(157,140,255,.28);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.mo:before{content:"";position:absolute;inset:-1px;border-radius:26px;padding:1px;background:linear-gradient(140deg,rgba(196,184,255,.8),transparent 40%,transparent 60%,rgba(245,198,79,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.mo .who{display:flex;align-items:center;gap:14px}
+.av{flex:none;width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(140deg,#9D8CFF,#FF8FC7);font:700 26px var(--disp);color:#120F22;position:relative}
+.av:after{content:"";position:absolute;right:-3px;bottom:-3px;width:16px;height:16px;border-radius:50%;background:var(--ok);border:3px solid #15122A}
+.mo h3{margin:0;font:700 21px var(--disp)}.mo .role{font:600 13px Inter;color:var(--mute)}
+.mo p{margin:16px 0 18px;color:var(--soft);font-size:15px}
+.mo .btns{display:grid;gap:8px}
+.btn{display:flex;align-items:center;gap:10px;height:46px;padding:0 16px;border-radius:13px;font:700 14.5px Inter;text-decoration:none;border:1px solid var(--line2);background:rgba(255,255,255,.04);transition:all .15s}
+.btn:hover{border-color:rgba(157,140,255,.55);background:rgba(157,140,255,.1)}
+.btn .r{margin-left:auto;color:var(--mute);font-weight:600;font-size:13px}
+.btn.main{color:#120F22;background:linear-gradient(180deg,#B7A8FF,#8B78FF);border-color:transparent;box-shadow:0 10px 28px rgba(139,120,255,.35)}
+.btn.main .r{color:rgba(18,15,34,.6)}
+@media(max-width:900px){.vhero{grid-template-columns:1fr;padding-top:40px}}
+/* sections */
+section.sec{padding:70px 0 20px}
+.sh{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.sh .k{font:700 12.5px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2)}
+.sh h2{margin:8px 0 0;font:700 clamp(30px,4vw,46px)/1.02 var(--disp);letter-spacing:-.035em}
+.sh p{margin:10px 0 0;color:var(--soft);max-width:620px}
+.sh .side{margin-left:auto}
+/* start here */
+.lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+@media(max-width:900px){.lanes{grid-template-columns:1fr 1fr}}@media(max-width:520px){.lanes{grid-template-columns:1fr}}
+.lane{display:flex;gap:14px;align-items:center;padding:12px;border-radius:18px;cursor:pointer;background:rgba(255,255,255,.035);border:1px solid var(--line);transition:transform .2s,border-color .2s,background .2s}
+.lane:hover{transform:translateY(-3px);border-color:rgba(157,140,255,.45);background:rgba(157,140,255,.07)}
+.lane img{flex:none;width:132px;aspect-ratio:16/9;object-fit:cover;border-radius:11px}
+.lane small{display:block;font:700 12.5px Inter;color:var(--acc2);margin-bottom:4px}
+.lane b{font:700 15.5px/1.3 var(--disp)}
+.start{display:block}
+.start .laws{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.start .laws{grid-template-columns:1fr}}
+@media(max-width:900px){.start{grid-template-columns:1fr}}
+.feat{position:relative;border-radius:22px;overflow:hidden;cursor:pointer;border:1px solid var(--line);aspect-ratio:16/9;background:#000}
+.feat img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:transform .5s,opacity .3s}
+.feat:hover img{transform:scale(1.04);opacity:.9}
+.feat .ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.85))}
+.feat .ov b{font:700 22px/1.2 var(--disp)}.feat .ov span{font:600 13px Inter;color:var(--soft)}
+.play{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.35);font-size:24px;transition:transform .2s}
+.feat:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+.laws{display:grid;gap:12px}
+.law{display:flex;gap:14px;padding:18px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid var(--line)}
+.law i{font-style:normal;flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:rgba(157,140,255,.12);border:1px solid rgba(157,140,255,.25)}
+.law b{display:block;font:700 16.5px var(--disp);margin-bottom:3px}.law span{font-size:14.5px;color:var(--soft)}
+.law kbd{font:700 12px ui-monospace,Menlo,monospace;padding:1px 7px;border-radius:6px;background:rgba(255,255,255,.1);border:1px solid var(--line2);color:var(--ink)}
+/* chips (shared) */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chips button{height:36px;padding:0 15px;border-radius:99px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--soft);font:600 13.5px Inter;cursor:pointer;transition:all .15s}
+.chips button:hover{color:var(--ink);border-color:rgba(157,140,255,.5)}
+.chips button.on{color:#120F22;background:var(--ink);border-color:var(--ink)}
+.chips button em{font-style:normal;opacity:.55;margin-left:5px}
+@media(max-width:600px){.chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:-20px;margin-right:-20px;padding:0 20px}.chips::-webkit-scrollbar{display:none}.chips button{flex:none}}
+/* videos */
+.vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1000px){.vgrid{grid-template-columns:repeat(3,1fr)}}@media(max-width:720px){.vgrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:440px){.vgrid{grid-template-columns:1fr}}
+.v{cursor:pointer;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--line);transition:transform .2s,border-color .2s}
+.v:hover{transform:translateY(-3px);border-color:rgba(157,140,255,.4)}
+.v .th{position:relative;aspect-ratio:16/9;background:#111}
+.v .th img{width:100%;height:100%;object-fit:cover;display:block}
+.v .th:after{content:"▶";position:absolute;right:10px;bottom:10px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);opacity:0;transition:opacity .2s}
+.v:hover .th:after{opacity:1}
+.v .vb{padding:11px 13px 13px}.v b{display:block;font:700 14px/1.3 Inter;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.v span{display:block;margin-top:5px;font:600 12px Inter;color:var(--mute)}
+.v.hide{display:none}
+.v .pick.new{background:#4ADE97}
+.v .pick{position:absolute;left:9px;top:9px;padding:3px 8px;border-radius:99px;font:800 10.5px Inter;letter-spacing:.04em;color:#120F22;background:#F5C64F}
+.more{margin-top:18px;text-align:center}
+.ghost{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:12px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--ink);font:600 14px Inter;cursor:pointer;text-decoration:none}
+.ghost:hover{border-color:rgba(157,140,255,.5)}
+/* answers */
+.abar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.abar input{flex:1;min-width:240px;height:50px;padding:0 16px 0 44px;border-radius:14px;border:1px solid var(--line2);background:rgba(255,255,255,.04) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%238F8AAE' stroke-width='2'%3E%3Ccircle cx='8' cy='8' r='6'/%3E%3Cpath d='m13 13 4 4'/%3E%3C/svg%3E") 15px 50%/18px no-repeat;color:var(--ink);font:500 15px Inter;outline:none}
+.abar input:focus{border-color:rgba(157,140,255,.6)}
+.ask{display:inline-flex;align-items:center;gap:6px;height:50px;padding:0 18px;border-radius:14px;text-decoration:none;font:600 14.5px Inter;color:var(--soft);border:1px solid rgba(245,198,79,.3);background:rgba(245,198,79,.06)}
+.ask b{color:var(--gold)}.ask:hover{border-color:rgba(245,198,79,.6)}
+.fg{columns:2;column-gap:16px}
+@media(max-width:860px){.fg{columns:1}}
+.fg .grp{break-inside:avoid;margin-bottom:16px;display:block}
+.fg .grp.hide{display:none}
+.grp{border-radius:20px;background:rgba(255,255,255,.03);border:1px solid var(--line);padding:8px}
+.grp h4{display:flex;align-items:center;gap:9px;margin:0;padding:12px 12px 10px;font:700 13px Inter;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2)}
+.grp h4 span{margin-left:auto;font:600 12px Inter;letter-spacing:0;text-transform:none;color:var(--mute)}
+.grp.hide{display:none}
+.q{border-radius:12px;border:1px solid transparent;transition:background .15s,border-color .15s}
+.q:hover{background:rgba(255,255,255,.035)}
+.q[open]{background:rgba(157,140,255,.08);border-color:rgba(157,140,255,.3)}
+.q summary{padding:11px 12px;font:600 15px/1.35 Inter;color:var(--ink);gap:11px}
+.q summary .e{flex:none;font-size:16px;width:20px;text-align:center}
+.q .a{padding:0 14px 14px 43px;color:var(--soft);font-size:14.5px}
+.q .a p{margin:0 0 9px}.q .a ul,.q .a ol{margin:0 0 9px;padding-left:18px}.q .a li{margin:4px 0}
+.q .a b{color:var(--ink)}.q .a a{color:var(--acc2)}
+.q .a kbd{font:700 12px ui-monospace,Menlo,monospace;padding:1px 7px;border-radius:6px;background:rgba(255,255,255,.1);border:1px solid var(--line2);color:var(--ink)}
+.q.hide{display:none}
+.none{display:none;padding:22px;border-radius:16px;border:1px dashed var(--line2);color:var(--mute);text-align:center}
+/* templates + tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.tiles{grid-template-columns:1fr}}
+.tile{position:relative;display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:18px;text-decoration:none;background:rgba(255,255,255,.035);border:1px solid var(--line);transition:transform .2s,border-color .2s,background .2s;overflow:hidden}
+.tile.hot{border-color:rgba(245,198,79,.4);background:linear-gradient(160deg,rgba(245,198,79,.1),rgba(255,255,255,.02))}
+.tile:hover{transform:translateY(-3px);border-color:rgba(157,140,255,.45);background:rgba(157,140,255,.07)}
+.tile .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.tile b{font:700 16.5px/1.25 var(--disp)}.tile span{font-size:14px;color:var(--mute)}
+.tile:after{content:"↗";position:absolute;right:16px;top:16px;color:var(--mute);font-weight:700;transition:transform .2s,color .2s}
+.tile:hover:after{color:var(--ink);transform:translate(2px,-2px)}
+.board{background:linear-gradient(160deg,rgba(157,140,255,.10),rgba(255,255,255,.02))}
+.board .mini-b{aspect-ratio:16/9;height:auto;border-radius:12px;margin-bottom:8px;background:#0E0C1A;border:1px solid var(--line);position:relative;overflow:hidden}
+.board .mini-b .bpick{position:absolute;left:8px;top:8px;padding:3px 8px;border-radius:99px;font:800 10.5px Inter;color:#120F22;background:#F5C64F;z-index:1}
+.board .mini-b img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.board:hover .mini-b img{transform:scale(1.04)}
+.lvl{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.lvl{grid-template-columns:1fr}}
+.lv{padding:22px;border-radius:20px;text-decoration:none;border:1px solid var(--line);background:rgba(255,255,255,.035);display:flex;flex-direction:column;gap:8px;transition:transform .2s,border-color .2s}
+.lv:hover{transform:translateY(-3px)}
+.lv .t{font:800 11px Inter;letter-spacing:.1em;text-transform:uppercase}
+.lv b{font:700 21px/1.2 var(--disp)}.lv span{color:var(--soft);font-size:14.5px}
+.lv .go{margin-top:auto;padding-top:10px;font:700 14px Inter}
+.lv.c1{border-color:rgba(255,143,199,.3);background:linear-gradient(160deg,rgba(255,143,199,.1),transparent 60%)}.lv.c1 .t,.lv.c1 .go{color:var(--pink)}
+.lv.c2{border-color:rgba(157,140,255,.35);background:linear-gradient(160deg,rgba(157,140,255,.12),transparent 60%)}.lv.c2 .t,.lv.c2 .go{color:var(--acc2)}
+.lvl.two{grid-template-columns:1fr 1fr;margin-top:14px}
+@media(max-width:900px){.lvl.two{grid-template-columns:1fr}}
+.lv.c4{border-color:rgba(74,222,151,.35);background:linear-gradient(160deg,rgba(74,222,151,.1),transparent 60%)}.lv.c4 .t,.lv.c4 .go{color:#4ADE97}
+.lv.c5{border-color:rgba(96,165,250,.35);background:linear-gradient(160deg,rgba(96,165,250,.1),transparent 60%)}.lv.c5 .t,.lv.c5 .go{color:#7DB5FF}
+.lv.c3{border-color:rgba(245,198,79,.35);background:linear-gradient(160deg,rgba(245,198,79,.1),transparent 60%)}.lv.c3 .t,.lv.c3 .go{color:var(--gold)}
+/* closing */
+.close{margin:80px 0 40px;padding:44px;border-radius:28px;text-align:center;background:radial-gradient(600px 260px at 50% 0%,rgba(157,140,255,.25),transparent 70%),rgba(255,255,255,.03);border:1px solid rgba(157,140,255,.3)}
+.close h2{margin:0 0 10px;font:700 clamp(30px,4vw,48px)/1.05 var(--disp);letter-spacing:-.035em}
+.close p{margin:0 auto 24px;max-width:540px;color:var(--soft)}
+.close .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.close .row .btn{min-width:200px;justify-content:center}
+.close .q2{margin-top:26px;font:italic 500 14px Inter;color:var(--mute)}
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(4,3,10,.82);backdrop-filter:blur(10px)}
+.modal.open{display:flex}
+.modal .box{width:min(1080px,100%)}
+.modal .fr{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.modal iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.modal .mt{display:flex;align-items:center;gap:14px;margin-top:14px}
+.modal .mt b{font:700 17px var(--disp)}.modal .mt span{color:var(--mute);font-size:13.5px}
+.modal .mt a{margin-left:auto}
+.x{position:absolute;right:18px;top:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:rgba(255,255,255,.06);color:var(--ink);font-size:18px;cursor:pointer}
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.aur i,.vhero h1 em{animation:none}}
+</style>
+<style id="v-light">
+/* ☀️ GENERATED (Joey 2026-10-04): every colour above re-mapped for a white page, only on html.v-light (Joey's Vault) */
+html.v-light .bar button{background:rgba(124,92,238,0.034)}
+html.v-light .card{background:linear-gradient(180deg,rgba(124,92,238,0.052),rgba(124,92,238,0.023))}
+html.v-light .card:hover{box-shadow:0 20px 50px rgba(80,60,170,0.122)}
+html.v-light .pv:after{background:linear-gradient(180deg,transparent,#F8F7FB)}
+html.v-light details{background:rgba(70,50,150,0.03)}
+html.v-light pre{color:#6857C7}
+html.v-light .hk{background:rgba(124,92,238,0.046)}
+html.v-light .scr{background:#F4F3FA}
+html.v-light .cal div{background:rgba(124,92,238,0.046)}
+html.v-light .score .b{background:rgba(124,92,238,0.081)}
+html.v-light .vid{background:rgba(124,92,238,0.046)}
+html.v-light .vid .th{background:linear-gradient(160deg,#3B2F7A,#F2F1F9)}
+html.v-light .dm .them{background:#EDECF4}
+html.v-light .ideas div{background:rgba(124,92,238,0.046)}
+html.v-light{background:#FBFBFD}
+html.v-light .nav{background:rgba(70,50,150,0.074)}
+html.v-light .links a:hover,html.v-light .links a.on{background:rgba(124,92,238,0.069)}
+html.v-light .stat{background:rgba(124,92,238,0.046)}
+html.v-light .mo{background:linear-gradient(160deg,rgba(157,140,255,.16),rgba(124,92,238,0.034) 50%);box-shadow:0 30px 80px rgba(80,60,170,0.158)}
+html.v-light .mo:before{background:linear-gradient(140deg,rgba(124,92,238,0.14),transparent 40%,transparent 60%,rgba(245,198,79,.6))}
+html.v-light .av:after{border:3px solid #DEDBF0}
+html.v-light .btn{background:rgba(124,92,238,0.046)}
+html.v-light .lane{background:rgba(124,92,238,0.04)}
+html.v-light .law{background:rgba(124,92,238,0.04)}
+html.v-light .law kbd{background:rgba(124,92,238,0.115)}
+html.v-light .chips button{background:rgba(124,92,238,0.034)}
+html.v-light .v{background:rgba(124,92,238,0.034)}
+html.v-light .v .th{background:#FAFAFA}
+html.v-light .ghost{background:rgba(124,92,238,0.034)}
+html.v-light .abar input{background:rgba(124,92,238,0.046) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%238F8AAE' stroke-width='2'%3E%3Ccircle cx='8' cy='8' r='6'/%3E%3Cpath d='m13 13 4 4'/%3E%3C/svg%3E") 15px 50%/18px no-repeat}
+html.v-light .grp{background:rgba(124,92,238,0.034)}
+html.v-light .q:hover{background:rgba(124,92,238,0.04)}
+html.v-light .q .a kbd{background:rgba(124,92,238,0.115)}
+html.v-light .tile{background:rgba(124,92,238,0.04)}
+html.v-light .tile.hot{background:linear-gradient(160deg,rgba(245,198,79,.1),rgba(124,92,238,0.023))}
+html.v-light .tile .ic{background:rgba(124,92,238,0.069)}
+html.v-light .board{background:linear-gradient(160deg,rgba(157,140,255,.10),rgba(124,92,238,0.023))}
+html.v-light .board .mini-b{background:#F8F7FB}
+html.v-light .lv{background:rgba(124,92,238,0.04)}
+html.v-light .lv.c4 .t,html.v-light .lv.c4 .go{color:#1EA464}
+html.v-light .lv.c5 .t,html.v-light .lv.c5 .go{color:#2F82EE}
+html.v-light .close{background:radial-gradient(600px 260px at 50% 0%,rgba(157,140,255,.25),transparent 70%),rgba(124,92,238,0.034)}
+
+/* ☀️ JOEY'S VAULT, BRIGHT + CALM (Joey 2026-10-04): getpoppy.ai's look (white, soft dot grid, lavender panels, ink words, the
+   blue → violet button) and a calmer layout. Only on html.v-light, set for /prompts/joey, so Mo's and Killian's Vaults are untouched. */
+html.v-light{--bg:#FFFFFF;--s1:#F7F6FB;--s2:#F1EFFA;--line:rgba(40,30,90,.09);--line2:rgba(40,30,90,.15);--ink:#111117;--soft:#4B4763;--mute:#7D78A0;
+  --acc:#8B5CF6;--acc2:#6D3FD9;--gold:#E8900C;--ok:#1EA464;--pink:#D6408F;--brand:linear-gradient(135deg,#536DFE,#8B5CF6)}
+html.v-light body{background:#FFFFFF radial-gradient(#E4E4EC 1px,transparent 1px) 0 0/22px 22px;color:var(--ink)}
+html.v-light .aur i{opacity:.16!important;filter:blur(110px)}
+html.v-light .aur i:nth-child(1){background:#8B5CF6}html.v-light .aur i:nth-child(2){background:#536DFE}html.v-light .aur i:nth-child(3){background:#F5A623;opacity:.08!important}
+html.v-light .grain{display:none}
+/* nav: white glass */
+html.v-light .nav{background:rgba(255,255,255,.78);border-bottom:1px solid var(--line)}
+html.v-light .links a:hover,html.v-light .links a.on{background:rgba(139,92,246,.08);color:var(--acc2)}
+html.v-light .cta,html.v-light .btn.main,html.v-light .copy{color:#fff!important;background:var(--brand)!important;border-color:transparent!important;box-shadow:0 10px 24px -8px rgba(139,92,246,.55)!important}
+html.v-light .btn.main .r{color:rgba(255,255,255,.75)}
+html.v-light .copy.done{background:linear-gradient(135deg,#22B573,#1EA464)!important}
+/* hero */
+html.v-light .eyebrow{color:var(--acc2);background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.25)}
+html.v-light .vhero h1 em{background:linear-gradient(90deg,#536DFE,#8B5CF6 55%,#F5A623);-webkit-background-clip:text;background-clip:text;color:transparent}
+html.v-light .mo{background:#fff;border-color:var(--line);box-shadow:0 24px 60px -20px rgba(60,40,140,.18)}
+html.v-light .mo:before{display:none}
+html.v-light .av:after{border-color:#fff}
+html.v-light .btn{background:#fff;color:var(--ink)}
+html.v-light .btn:hover{background:rgba(139,92,246,.06)}
+/* chips: the picked one = violet, white words */
+html.v-light .chips button,html.v-light .bar button{background:#fff}
+html.v-light .chips button.on,html.v-light .bar button.on{color:#fff;background:var(--acc2);border-color:var(--acc2)}
+/* cards + panels: white, one hairline, a soft lift */
+html.v-light .card,html.v-light .lane,html.v-light .law,html.v-light .tile,html.v-light .grp,html.v-light .v,html.v-light .lv,html.v-light .stat{background:#fff;border-color:var(--line);box-shadow:0 1px 2px rgba(40,30,90,.04)}
+html.v-light .card:hover,html.v-light .lane:hover,html.v-light .tile:hover,html.v-light .v:hover,html.v-light .lv:hover{border-color:rgba(139,92,246,.35);background:#fff;box-shadow:0 14px 34px -14px rgba(60,40,140,.22)}
+html.v-light .pv{background:linear-gradient(180deg,#F7F5FF,#FBFAFF)}
+html.v-light .pv:after{background:linear-gradient(180deg,transparent,#FBFAFF)}
+html.v-light pre{color:var(--soft)}
+html.v-light .tag{color:var(--acc2);background:rgba(139,92,246,.08)}
+html.v-light .tile.hot,html.v-light .board,html.v-light .lv.c1,html.v-light .lv.c2,html.v-light .lv.c3,html.v-light .lv.c4,html.v-light .lv.c5{background:#fff}
+html.v-light .board .mini-b{background:#F4F3FA}
+html.v-light .tile .ic,html.v-light .law i{background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.18)}
+html.v-light .q[open]{background:rgba(139,92,246,.05)}
+html.v-light .abar input{background-color:#fff}
+html.v-light .ask b{color:var(--gold)}
+html.v-light .close{background:radial-gradient(600px 260px at 50% 0%,rgba(139,92,246,.10),transparent 70%),#fff;border:1px solid var(--line)}
+html.v-light .law kbd,html.v-light .q .a kbd{background:#F4F3FA}
+
+/* 🧭 SPATIAL FLOW: one rhythm for every section, denser grids, shorter cards (the page was ~9,600px tall) */
+html.v-light .vhero{padding:64px 0 24px}
+html.v-light section.sec{padding:88px 0 0}
+html.v-light .sh{margin-bottom:24px}
+html.v-light .sh p{font-size:16.5px}
+html.v-light .grid{grid-template-columns:repeat(3,1fr);gap:16px;padding:6px 0 0}
+@media(max-width:1000px){html.v-light .grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){html.v-light .grid{grid-template-columns:1fr}}
+html.v-light .pv{height:168px;padding:14px}
+html.v-light .card .body{padding:16px 18px 18px;gap:8px}
+html.v-light .card h3{font-size:18.5px}
+html.v-light .card .what{font-size:14px}
+html.v-light .copy{height:42px;font-size:14px}
+html.v-light .lanes{gap:12px}
+html.v-light .vgrid{gap:14px}
+html.v-light .tiles{gap:12px}
+html.v-light #help .tiles{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){html.v-light #help .tiles{grid-template-columns:repeat(2,1fr)}}
+html.v-light .tile{padding:16px}
+html.v-light .close{margin:96px 0 48px}
+/* no picture above the prompts (Joey 2026-10-04: "it confuses more than it adds"): the title, what it does, where to run it, copy */
+html.v-light .card .pv{display:none}
+html.v-light .card .body{padding-top:20px}
+/* 🎬 Joey's layout pieces */
+html.v-light .acad{display:flex;align-items:center;gap:28px;margin:8px 0 0;padding:28px 32px;border-radius:24px;background:#fff;border:1px solid rgba(139,92,246,.28);box-shadow:0 20px 50px -24px rgba(60,40,140,.25)}
+html.v-light .acad .k{font:700 12.5px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2)}
+html.v-light .acad h2{margin:6px 0 6px;font:700 clamp(24px,3vw,32px)/1.1 var(--disp);letter-spacing:-.03em}
+html.v-light .acad p{margin:0;color:var(--soft);max-width:620px}
+html.v-light .acad .ac-go{margin-left:auto;flex:none;min-width:220px;justify-content:center}
+@media(max-width:720px){html.v-light .acad{flex-direction:column;align-items:flex-start}html.v-light .acad .ac-go{margin-left:0;width:100%}}
+html.v-light .vic{width:20px;height:20px}
+html.v-light .tile .ic,html.v-light .law i{color:var(--acc2)}
+html.v-light .bhide{display:none!important}
+html.v-light pre mark{background:rgba(139,92,246,.1);color:var(--acc2)}
+html.v-light .q .a{padding-left:14px}
+html.v-light .lv .t,html.v-light .lv .go{color:var(--acc2)!important}
+html.v-light .lv{border-color:var(--line)!important}
+html.v-light .close .row .btn:not(.main){background:none;border-color:transparent;box-shadow:none;color:var(--soft);min-width:0}
+html.v-light .close .row .btn:not(.main):hover{color:var(--acc2)}
+</style>
+
+</head>
+<body>
+<div class="aur"><i></i><i></i><i></i></div><div class="grain"></div>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top"><img src="assets/poppy-mascot-hd.png" alt="">The Poppy Vault <small>by Mo</small></a>
+  <nav class="links" id="links">
+    <a href="#start">Start here</a><a href="#prompts">Prompts</a><a href="#videos">Videos</a><a href="#answers">Answers</a><a href="#templates">Templates</a><a href="#help">Community</a><a href="#level-up">Level up</a>
+  </nav>
+  <a class="cta" href="#mo">💬 Talk to Mo</a>
+</div></header>
+
+<div class="wrap" id="top">
+  <section class="vhero">
+    <div class="rv">
+      <span class="eyebrow">🔐 Client only · your bonus</span>
+      <h1>Everything you need to <em>win with Poppy</em></h1>
+      <p class="lead">The prompts we run with every client, the videos that actually teach it, straight answers to what everyone asks, and a direct line to me. Bookmark this. It's yours.</p>
+    </div>
+    <aside class="mo rv" id="mo">
+      <div class="who"><div class="av">M</div><div><h3>Mo</h3><div class="role">Your Poppy guide · replies fast</div></div></div>
+      <p>Stuck, unsure what to make next, or want me to look at your board? Text me. That's what I'm here for.</p>
+      <div class="btns">
+        <a class="btn main" href="sms:+12135582704">💬 Text me <span class="r">+1 (213) 558-2704</span></a>
+        <a class="btn" href="mailto:mo@getpoppy.ai">✉️ Email <span class="r">mo@getpoppy.ai</span></a>
+        <a class="btn" href="https://calendly.com/d/cskf-pwt-9jd/poppy-ai-1-1-onboarding-clone" target="_blank" rel="noopener">📅 Book a 1:1 with me <span class="r">30 min</span></a>
+      </div>
+    </aside>
+  </section>
+
+  <section class="sec" id="start">
+    <div class="sh rv"><div><div class="k">01 · Start here</div><h2>Start with what you make</h2><p>Pick the one that sounds like you and watch that first. Then follow the three rules under it.</p></div></div>
+    <div class="lanes">
+      <div class="lane rv" data-v="ZaPfrgPAYi4"><img src="https://i.ytimg.com/vi/ZaPfrgPAYi4/mqdefault.jpg" alt="" loading="lazy"><div><small>📱 I make Reels, TikToks or Shorts</small><b>50+ Instagram posts in 10 minutes</b></div></div>
+      <div class="lane rv" data-v="d9W1rq1c3bs"><img src="https://i.ytimg.com/vi/d9W1rq1c3bs/mqdefault.jpg" alt="" loading="lazy"><div><small>🎥 I make YouTube videos</small><b>An AI-powered YouTube content system</b></div></div>
+      <div class="lane rv" data-v="-VAt7hKJj1Q"><img src="https://i.ytimg.com/vi/-VAt7hKJj1Q/mqdefault.jpg" alt="" loading="lazy"><div><small>💰 I run ads</small><b>100+ ads in 10 minutes</b></div></div>
+      <div class="lane rv" data-v="9SiwA6-aDbM"><img src="https://i.ytimg.com/vi/9SiwA6-aDbM/mqdefault.jpg" alt="" loading="lazy"><div><small>📧 I send emails or a newsletter</small><b>An AI-powered email marketing system</b></div></div>
+      <div class="lane rv" data-v="I1slu0REi1Y"><img src="https://i.ytimg.com/vi/I1slu0REi1Y/mqdefault.jpg" alt="" loading="lazy"><div><small>💼 I post on LinkedIn</small><b>Viral LinkedIn posts in 10 minutes</b></div></div>
+      <div class="lane rv" data-v="7y8z7bboFV4"><img src="https://i.ytimg.com/vi/7y8z7bboFV4/mqdefault.jpg" alt="" loading="lazy"><div><small>🏆 Show me it works</small><b>The workflow making $160K a month</b></div></div>
+    </div>
+    <div class="start">
+      <div class="laws">
+        <div class="law rv"><i>🧱</i><div><b>Build the board, not the chat</b><span>The second a chat gives you something great (a script, a framework, your voice), copy it into a text box with <kbd>T</kbd>. Now every chat on the board can use it.</span></div></div>
+        <div class="law rv"><i>🎙️</i><div><b>Talk, don't type</b><span>Stop hunting for the perfect prompt. Hit the mic and talk to it like a person. Your energy and tone come through and Poppy mirrors it back.</span></div></div>
+        <div class="law rv"><i>🎯</i><div><b>Less is more</b><span>Only connect what the chat needs for this job. One idea, one fresh chat. Cleaner answers, fewer credits.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="prompts">
+    <div class="sh rv"><div><div class="k">02 · The prompts</div><h2>The prompts we use with every client</h2><p>The exact ones we run on calls. Copy one, paste it into your board chat, fill the <mark style="background:rgba(245,198,79,.15);color:#F5C64F;border-radius:4px;padding:0 4px">[brackets]</mark>, post what comes out.</p></div></div>
+    <div class="chips" id="bar"></div>
+    <main class="grid" id="grid"></main>
+    <div class="more" id="pmorew"><button class="ghost" id="pmore">Show all prompts ↓</button></div>
+  </section>
+
+  <section class="sec" id="videos">
+    <div class="sh rv"><div><div class="k">03 · The videos</div><h2>The videos I'd make you watch</h2><p>Hand-picked. Every one shows a real workflow inside Poppy. Pick what you want to make and press play.</p></div>
+      <a class="ghost side" href="https://www.youtube.com/@PoppyAI/videos" target="_blank" rel="noopener">▶ Poppy on YouTube</a></div>
+    <div class="chips" id="vchips"></div>
+    <div class="vgrid" id="vgrid"></div>
+    <div class="more"><button class="ghost" id="vmore">Show all videos ↓</button></div>
+  </section>
+
+  <section class="sec" id="answers">
+    <div class="sh rv"><div><div class="k">04 · Straight answers</div><h2>What everyone asks</h2><p>Credits, models, memory, the weird stuff. Short answers, the way I'd say it on a call.</p></div></div>
+    <div class="abar rv">
+      <input id="qs" type="search" placeholder="Search answers: credits, voice, stuck…" autocomplete="off">
+      <a class="ask" href="sms:+12135582704">🙋 Not on the list? <b>Text Mo</b></a>
+    </div>
+    <div class="fg" id="faq"></div>
+    <div class="none" id="none">Nothing on that yet. <a href="sms:+12135582704" style="color:var(--acc2)">Text me</a> and I'll answer it.</div>
+  </section>
+
+  <section class="sec" id="templates">
+    <div class="sh rv"><div><div class="k">05 · Template boards</div><h2>Boards you can steal</h2><p>The boards our team actually builds with. Open one, duplicate it into your account, swap in your own stuff.</p></div>
+      <a class="ghost side" href="https://www.youtube.com/playlist?list=PLCaYRJep-hihvPYRvhudOF_AzHXL5hjbV" target="_blank" rel="noopener">▶ Templates walkthroughs</a></div>
+    <div class="tiles" id="boards"></div>
+  </section>
+
+  <section class="sec" id="help">
+    <div class="sh rv"><div><div class="k">06 · Help, community + API</div><h2>Everything else you need</h2><p>The community, the API docs, and the official how-tos I send most.</p></div>
+      <a class="ghost side" href="https://intercom.help/poppy-ai/en/" target="_blank" rel="noopener">Open the full help center ↗</a></div>
+    <div class="tiles" id="hc"></div>
+  </section>
+
+  <section class="sec" id="level-up">
+    <div class="sh rv"><div><div class="k">07 · Level up</div><h2>Get more out of Poppy</h2><p>More credits, your team inside, the bigger tools. Grab what you need now.</p></div></div>
+    <div class="lvl">
+      <a class="lv c1 rv" href="https://calendly.com/d/cshd-tsw-fmb/get-access-to-landing-pages" target="_blank" rel="noopener"><span class="t">Creator plan</span><b>Landing pages, VSLs and presentations</b><span>Build the pages and decks that sell, straight from your board.</span><span class="go">Book the demo →</span></a>
+      <a class="lv c2 rv" href="https://calendly.com/d/cwcx-928-t5p/get-access-to-apis-and-chatbots" target="_blank" rel="noopener"><span class="t">Power User</span><b>APIs, chatbots and automation</b><span>Plug Poppy into your tools and let it run while you sleep. Docs: <u onclick="event.preventDefault();window.open('https://poppy-api-hub.vercel.app/','_blank')">the Poppy API Hub</u>.</span><span class="go">Book the demo →</span></a>
+      <a class="lv c3 rv" href="https://calendly.com/d/cw3z-fhb-88d/viral-content-system-strategy-call" target="_blank" rel="noopener"><span class="t">Done with you</span><b>The Viral Content System</b><span>A custom content strategy built for your business, with our team.</span><span class="go">Book a strategy call →</span></a>
+    </div>
+    <div class="lvl two">
+      <a class="lv c4 rv" href="sms:+12135582704&body=Hey%20Mo%2C%20I%20need%20more%20Poppy%20credits" rel="noopener"><span class="t">⚡ Need more credits</span><b>Running out every month?</b><span>Move up a plan (4,000 to 16,000 a month) or grab a one-time boost. Text me and I'll set up the right one.</span><span class="go">Text Mo →</span></a>
+      <a class="lv c5 rv" href="https://calendly.com/d/csfz-p3k-322/get-access-to-teams" target="_blank" rel="noopener"><span class="t">👥 Need team seats</span><b>Bring your team or VA in</b><span>Seats for your team, shared boards, everyone writing in your voice.</span><span class="go">Book a teams call →</span></a>
+    </div>
+  </section>
+
+  <section class="close rv">
+    <h2>Don't just watch it. Use it.</h2>
+    <p>Pick one prompt or one video, try it in Poppy today, and send me what you made. I actually want to see it.</p>
+    <div class="row">
+      <a class="btn main" href="sms:+12135582704">💬 Text Mo</a>
+      <a class="btn" href="https://app.getpoppy.ai" target="_blank" rel="noopener">🚀 Open Poppy</a>
+      <a class="btn" href="https://www.skool.com/getpoppyai" target="_blank" rel="noopener">👥 Join the community</a>
+    </div>
+    <div class="q2">"The best time to start was yesterday. The second best time is now." 💜 Mo</div>
+  </section>
+  <footer>Made with 💜 by Mo and the Poppy team</footer>
+</div>
+
+<div class="modal" id="modal"><button class="x" id="mx" aria-label="Close">✕</button><div class="box"><div class="fr" id="mfr"></div><div class="mt"><div><b id="mtt"></b><br><span id="mta"></span></div><a class="ghost" id="myt" target="_blank" rel="noopener">Open on YouTube ↗</a></div></div></div>
+<div class="toast" id="toast">Copied. Paste it into Poppy ✨</div>
+<script>
+/* 🎼 ONE VAULT PER REP (Mo 2026-10-01): /prompts = Mo, /prompts/joey = Joey, /prompts/killian = Killian. Read off the PATH (a rewrite's
+   query string never reaches the page). Joey and Killian get email + their own booking link, never a personal phone number. */
+const VREPS = {
+  joey:    { light: true, name: "Joey",    email: "joeyv@getpoppy.ai",   book: "https://cal.com/joeyvalentino/touch-base", bookLabel: "Book a touch base with me" },
+  killian: { light: true, name: "Killian", email: "killian@getpoppy.ai", book: "https://getpoppy.ai/group-onboarding?rep=killian" },
+};
+const VR = VREPS.killian;   // 🔐 Killian's own Vault (killianward8-lab.github.io/vault): always his, always the bright layout
+if (VR && VR.light) document.documentElement.classList.add("v-light");   // ☀️ Joey's Vault = the bright brand look (Joey 2026-10-04)
+const PK = VR ? "Top picks" : "Mo's picks";
+if (VR) (function () {
+  const n = VR.name, $1 = (q) => document.querySelector(q), mail = (subj) => "mailto:" + VR.email + (subj ? "?subject=" + encodeURIComponent(subj) : "");
+  const set = (q, f) => document.querySelectorAll(q).forEach(f);
+  document.title = "The Poppy Vault · " + n;
+  set(".brand small", (e) => (e.textContent = "by " + n));
+  set(".nav .cta", (e) => (e.textContent = "💬 Talk to " + n));
+  $1(".mo .av").textContent = n[0];
+  $1(".mo h3").textContent = n;
+  $1(".mo p").textContent = "Stuck, unsure what to make next, or want me to look at your board? Email me. That's what I'm here for.";
+  $1(".mo .btns").innerHTML = '<a class="btn main" href="' + mail("Poppy question") + '">✉️ Email me <span class="r">' + VR.email + '</span></a>'
+    + '<a class="btn" href="' + VR.book + '" target="_blank" rel="noopener">📅 ' + (VR.bookLabel || 'Book a call with me') + ' <span class="r">' + n + '\'s calendar</span></a>';
+  set(".ask", (e) => { e.href = mail("A Poppy question"); e.innerHTML = "🙋 Not on the list? <b>Ask " + n + "</b>"; });
+  set("#none a", (e) => { e.href = mail("A Poppy question"); e.textContent = "Email me"; });
+  set(".lv.c4", (e) => { e.href = mail("I need more Poppy credits"); e.querySelectorAll("span").forEach((sp) => { sp.innerHTML = sp.innerHTML.replace("Text me", "Email me").replace("Text Mo", "Email " + n); }); });
+  set(".close .row .btn.main", (e) => { e.href = mail("What I made in Poppy"); e.textContent = "✉️ Email " + n; });
+  set(".q2", (e) => (e.innerHTML = e.innerHTML.replace("💜 Mo", "💜 " + n)));
+  set("footer", (e) => (e.textContent = "Made with 💜 by " + n + " and the Poppy team"));
+})();
+</script>
+<script>
+/* 📚 THE PROMPTS (Mo 2026-10-01: the prompts the team actually uses on calls, cleaned; + the two the call research proved).
+   Fill-ins are [IN BRACKETS]. pv = a small mock of what comes out. */
+const PV = {
+  hooks: (a) => `<div class="mini"><div class="lbl">Top hooks</div>${a.map((h, i) => `<div class="hk${i ? "" : " best"}"><i>${i + 1}</i>${h}</div>`).join("")}</div>`,
+  score: (rows, tip) => `<div class="mini"><div class="score">${rows.map(([k, v, c]) => `<span>${k}</span><div class="b"><i style="width:${v * 10}%;background:${c}"></i></div><span>${v}/10</span>`).join("")}</div>${tip ? `<div class="reply">${tip}</div>` : ""}</div>`,
+  chips: (lbl, a) => `<div class="mini"><div class="lbl">${lbl}</div><div class="ideas">${a.map((x) => `<div>${x}</div>`).join("")}</div></div>`,
+  chat: (q, a) => `<div class="mini"><div class="chat">${q}</div><div class="reply">${a}</div></div>`,
+  vid: (a, note) => `<div class="mini">${a.map(([t, v]) => `<div class="vid"><div class="th">▶</div><div><b>${t}</b><span>${v}</span></div></div>`).join("")}${note ? `<div class="reply">${note}</div>` : ""}</div>`,
+};
+const P = [
+{ id:"hooks", cat:"Hooks", top:true, title:"Viral short-form hooks", tint:"rgba(245,198,79,.22)",
+  what:"10 viral hooks for your business, each with the framework behind it. Our most used prompt.",
+  where:"Your board chat, with Expert Brain, Voice & Content, Inspiration and Business groups connected.",
+  pv: PV.hooks(["I lost 3 clients before I figured this out.", "Stop posting tips. Do this instead.", "The $0 mistake killing your reach.", "Nobody tells you this about [your niche]."]),
+  prompt:`Create for me 10 viral hooks for my business for short-form content.
+
+1. Use Expert Brain content as the frameworks for hooks and storytelling
+2. Use my Voice & Content group as the tone of voice for the scripts
+3. Use Inspiration content as the content I want to model when necessary
+4. Use my Business group to create content based on the goal defined in there
+
+For each hook, explain why it works and identify the framework or inspiration content you used.` },
+
+{ id:"hooksmore", cat:"Hooks", title:"10 more like the winner", tint:"rgba(245,198,79,.2)",
+  what:"Found a hook you love? Get 10 more in the same style, ranked, so you never run dry.",
+  where:"Same chat, right after the hooks prompt.",
+  pv: PV.hooks(["Stop posting tips. Do this instead.", "Stop chasing views. Chase this instead.", "Stop writing captions. Say this instead."]),
+  prompt:`Give me 10 more hooks in the same style as hook #[NUMBER]. Keep the same framework and energy, change the angle each time. Rank them from strongest to weakest and tell me which one you would post first and why.` },
+
+{ id:"titles", cat:"Hooks", title:"YouTube titles + thumbnail text", tint:"rgba(255,143,199,.2)",
+  what:"10 titles people actually click, plus the 5 words for your thumbnail.",
+  where:"Drop the video or script on the board, then run this in the chat.",
+  pv: PV.chips("Titles", ["I tried it for 30 days", "Nobody tells you this", "The $0 mistake", "Stop doing this", "What actually works", "I was wrong about"]),
+  prompt:`Write 10 clickable YouTube titles for [THIS VIDEO / TOPIC], using the title frameworks in my Expert Brain group. Under 60 characters each, curiosity without clickbait. Then pick the best one and write 3 options for the thumbnail text, 5 words max each.` },
+
+{ id:"script", cat:"Scripts", title:"Hook to full script", tint:"rgba(157,140,255,.22)",
+  what:"Turn your favorite hook into a ready-to-film script in your voice.",
+  where:"Same chat, right after the hooks prompt.",
+  pv:`<div class="mini"><div class="scr"><b>HOOK</b>I lost 3 clients before I figured this out.<br><b>BODY</b>Last spring I was posting every day and nothing landed…<br><b>CTA</b>Comment "SYSTEM" and I'll send it.<br><b>EDIT</b>Text on screen at 0:02, cut to B-roll at 0:08.</div></div>`,
+  prompt:`Write the full short-form script for hook #[NUMBER]. Keep it in my voice from my Voice & Content group. Give me the hook, the body, the call to action, and on-screen text and editing notes. Keep it under [60] seconds.` },
+
+{ id:"steal", cat:"Scripts", title:"Same structure, my idea", tint:"rgba(74,222,151,.18)",
+  what:"Take a video that blew up and rebuild it beat for beat around your own idea.",
+  where:"Drop the viral video on the board, then run this in the chat.",
+  pv: PV.chat("Recreate this in my voice, new idea", "Their structure: hook (0:00) → story (0:04) → twist (0:18) → CTA. Your version below…"),
+  prompt:`Recreate the video I connected in my voice and style. Keep the exact same structure, pacing and hook style, but use a new idea about [MY TOPIC]. Show me the original structure first, beat by beat, then my new script under it.` },
+
+{ id:"adscript", cat:"Scripts", title:"30-second ad, 3 hooks", tint:"rgba(245,198,79,.2)",
+  what:"A ready-to-film ad script with three hooks to split test.",
+  where:"Your board chat, with your Business and Voice & Content groups connected.",
+  pv:`<div class="mini"><div class="scr"><b>HOOK A</b>Still posting every day with nothing to show?<br><b>HOOK B</b>This is how I got 42 leads from one post.<br><b>HOOK C</b>Your content is fine. Your hook isn't.<br><b>CTA</b>Tap below and try it for $1.</div></div>`,
+  prompt:`Write a 30-second [Meta / YouTube] ad script for [MY OFFER]. Give me 3 different hooks for the same body, the body, and a clear call to action. Use my Business group for the offer and my Voice & Content group for the tone. Add on-screen text and B-roll notes.` },
+
+{ id:"rate", cat:"Analyze", title:"Rate my content", tint:"rgba(245,198,79,.18)",
+  what:"A score out of 10 for the hook, structure, pacing and call to action, and how to make each a 10.",
+  where:"Drop your video or post on the board, then run this in the chat.",
+  pv: PV.score([["Hook", 4, "#FF8E80"], ["Structure", 7, "#F5C64F"], ["Pacing", 6, "#F5C64F"], ["CTA", 3, "#FF8E80"]], "To make the hook a 10: open on the result, not the setup."),
+  prompt:`Analyze this content and give me a score out of 10 for the hook, structure, pacing, and call to action separately. Then tell me exactly what to change to make every single one a 10.` },
+
+{ id:"why", cat:"Analyze", title:"Why it performed", tint:"rgba(74,222,151,.16)",
+  what:"Find out why a post worked or flopped, and what to repeat or fix next time.",
+  where:"Drop the post on the board, then run this in the chat.",
+  pv: PV.chips("Breakdown", ["Hook: a bold claim", "Structure: problem, proof, fix", "Pacing: a cut every 2s", "CTA: one clear ask", "Repeat: the open loop", "Fix: the slow middle"]),
+  prompt:`Analyze why this specific piece of content performed the way it did. Break down the hook, structure, pacing, framing, and call to action. Then tell me exactly what to replicate or change in future content to either fix what failed or double down on what worked.` },
+
+{ id:"viewer", cat:"Analyze", title:"Watch it like a viewer", tint:"rgba(255,143,199,.18)",
+  what:"See your video through your ideal viewer's eyes, second by second.",
+  where:"Drop the video on the board, then run this in the chat.",
+  pv: PV.chips("Viewer reaction", ["0:00 Hook: hooked 👀", "0:05 Setup: still here", "0:12 Middle: getting slow 😐", "0:20 Swipe risk ⚠️", "0:25 Payoff: worth it", "0:30 CTA: would comment"]),
+  prompt:`Look at this piece of content as if you were the ideal viewer seeing it for the first time. Walk me through exactly what you'd think and feel at each stage: the hook, the middle, the end. Tell me where you would have kept watching and where you would have stopped, and why.` },
+
+{ id:"outliers", cat:"Analyze", title:"Their outliers vs my latest", tint:"rgba(157,140,255,.2)",
+  what:"Compare a top creator's best videos to your latest, and get 5 ideas from the gap.",
+  where:"Pull their outliers and your latest videos onto the board, then run this.",
+  pv: PV.vid([["Their top 10", "avg 1.2M views"], ["Your latest 10", "avg 4.1K views"]], "The gap: their hooks open on a number. Yours open on a greeting."),
+  prompt:`Analyze @[CREATOR]'s top 10 outliers and my latest 10 videos. Break down what was working with the hooks, structures, and frameworks in their outliers and why they performed, compared to my latest. Give me advice on what I could implement into future hooks, structures, and frameworks to help my content perform more consistently. Then give me 5 video ideas based on this analysis.` },
+
+{ id:"reverse", cat:"Ideas", title:"Reverse engineer a video", tint:"rgba(255,143,199,.2)",
+  what:"Get the exact formula behind a video, then 5 ideas that use it for your business.",
+  where:"Drop the video link on the board, then run this in the chat.",
+  pv: PV.chips("The formula", ["Hook: a confession", "Story: before, after", "Trigger: curiosity", "Pacing: fast open", "CTA: comment a word", "5 ideas for you →"]),
+  prompt:`Reverse engineer this video completely. Tell me the exact formula they used: the hook type, the story structure, the emotional triggers, the pacing decisions, the call to action. Then give me 5 video ideas that use the exact same formula but for my business.` },
+
+{ id:"viral", cat:"Ideas", title:"Why it went viral, my angle", tint:"rgba(245,198,79,.2)",
+  what:"Break down why a video went viral, then make your own version with a new angle.",
+  where:"Drop the viral video on the board, then run this in the chat.",
+  pv: PV.vid([["Their video", "2.4M views"]], "Same framework, your angle: \"I almost quit my practice in 2024…\""),
+  prompt:`Analyze exactly why this specific piece of content went viral. Break down the hook, the psychological triggers, the structure, the pacing, everything that made this perform the way it did. Then tell me how to create a version of this for someone in the same space with a completely different angle. Same underlying framework, different execution.` },
+
+{ id:"strategist", cat:"Ideas", title:"What they know that others miss", tint:"rgba(157,140,255,.2)",
+  what:"Find the audience insight behind a creator's success, and use it to compete without copying.",
+  where:"Drop the creator's video on the board, then run this in the chat.",
+  pv: PV.chat("What does this creator understand?", "Their audience doesn't want tips. They want permission to stop doing what isn't working."),
+  prompt:`Watch this video as a content strategist. Tell me what this creator understands about their audience that most people in this space miss. Then tell me how to use that same insight to create content that competes directly with this without copying it.` },
+
+{ id:"gaps", cat:"Ideas", title:"Untouched topics in your niche", tint:"rgba(74,222,151,.16)",
+  what:"Topics, formats and angles your audience wants that nobody is making yet.",
+  where:"Add your content and what's performing in your niche to the board, then run this.",
+  pv: PV.chips("Nobody is making", ["Myths in your niche", "Behind the scenes", "Client teardowns", "Price breakdowns", "Day in the life", "Mistakes to avoid"]),
+  prompt:`Compare what this creator is posting versus what's performing in their space. Identify the specific topics, formats, and angles they haven't touched yet that their audience is clearly hungry for, based on what's working for others in the same niche.` },
+
+{ id:"opportunities", cat:"Planning", title:"3 biggest opportunities", tint:"rgba(245,198,79,.18)",
+  what:"The three things you're leaving on the table right now: topic, format and why.",
+  where:"Add both sets of content to the board, then run this.",
+  pv: PV.hooks(["Myth-busting reels on [topic]", "A weekly client teardown series", "Carousels from your top 3 videos"]),
+  prompt:`Look at both sets of content and tell me the three biggest opportunities this creator is leaving on the table right now. Be specific about the exact topic, the exact format, and why the audience in this space clearly wants it.` },
+
+{ id:"week", cat:"Planning", title:"10 ideas for this week", tint:"rgba(157,140,255,.2)",
+  what:"A week of posts that fit your business, each with the hook and the format.",
+  where:"Your board chat, with your Business and Inspiration groups connected.",
+  pv: PV.chips("This week", ["Mon: myth busting", "Tue: client win", "Wed: how I do X", "Thu: hot take", "Fri: behind the scenes", "Sat: Q&A"]),
+  prompt:`Give me 10 content ideas for this week based on my Business group and what is working in my Inspiration content. For each one: the hook, the format (talking head, B-roll, carousel, and so on) and why it fits my audience right now. Then turn idea #[NUMBER] into a full script.` },
+
+{ id:"calendar", cat:"Planning", title:"30-day plan that fills the gaps", tint:"rgba(74,222,151,.18)",
+  what:"A month of content where every post targets a hole in your niche.",
+  where:"Add your content and your niche's top content to the board, then run this.",
+  pv:`<div class="mini"><div class="lbl">Your next 30 days</div><div class="cal">
+    <div class="r">Reach</div><div class="c">Trust</div><div class="r">Reach</div><div>Rest</div><div class="s">Sell</div><div class="r">Reach</div><div class="c">Trust</div>
+    <div class="r">Reach</div><div class="c">Trust</div><div class="s">Sell</div><div class="r">Reach</div><div>Rest</div><div class="c">Trust</div><div class="r">Reach</div></div></div>`,
+  prompt:`Analyze this creator's content against what's working in their space and give me a 30-day content plan that fills the gaps. Each piece should target a specific hole in what's currently being posted in this niche.` },
+
+{ id:"voice", cat:"Voice", title:"Analyze a brand voice", tint:"rgba(157,140,255,.22)",
+  what:"The words, rhythm and beliefs that make someone sound like themselves.",
+  where:"Drop 3 to 5 samples (posts, scripts, transcripts) on the board, then run this.",
+  pv: PV.chips("Voice", ["Uses: real talk, numbers", "Avoids: jargon, hype", "Short punchy sentences", "Warm but direct", "Believes: you can do it", "Signature: the open loop"]),
+  prompt:`Based only on these examples, analyze this person's brand voice. What specific words do they use and avoid? What's their sentence structure? What's their emotional register? What do they believe about their audience? What makes their communication style unique and identifiable?` },
+
+{ id:"tighten", cat:"Voice", title:"Make it sound like me", tint:"rgba(74,222,151,.18)",
+  what:"Rewrite anything so it sounds like you said it, not like AI wrote it.",
+  where:"Any chat with your Voice & Content group connected. Paste the text in.",
+  pv:`<div class="mini"><div class="reply" style="text-decoration:line-through;opacity:.6">In today's fast-paced digital landscape, leveraging content is essential.</div><div class="reply">Posting every day and getting nothing? Here's why.</div></div>`,
+  prompt:`Rewrite this so it sounds like me, using my Voice & Content group. Shorter sentences, simpler words, cut anything a normal person would not say out loud. Keep the meaning, kill the fluff. Show me the before and after.
+
+[PASTE YOUR TEXT]` },
+
+{ id:"voiceguide", cat:"Voice", title:"One-paragraph voice guide", tint:"rgba(255,143,199,.18)",
+  what:"A description of your voice so specific that generic AI writing becomes impossible.",
+  where:"Drop your samples on the board, then run this. Save the answer in your Voice group.",
+  pv: PV.chat("Describe my voice in one paragraph", "Writes like a friend who's been there: short sentences, real numbers, zero hype…"),
+  prompt:`Analyze these samples and write a one-paragraph description of this person's voice that I could hand to anyone, and they would immediately understand how to write and sound like this person. Make it so specific that generic AI writing would be impossible following this guide.` },
+
+{ id:"repurpose", cat:"Repurpose", title:"One video into everything", tint:"rgba(157,140,255,.22)",
+  what:"Reels, a newsletter, tweets, LinkedIn posts and a carousel outline from one piece.",
+  where:"Drop the video or transcript on the board, then run this.",
+  pv:`<div class="mini"><div class="slides">
+    <div class="slide" style="background:#C4B8FF"><small>3 REELS</small>Scripts ready to film</div>
+    <div class="slide" style="background:#F5C64F"><small>EMAIL</small>Your newsletter</div>
+    <div class="slide" style="background:#4ADE97"><small>LINKEDIN</small>2 posts</div></div></div>`,
+  prompt:`From this single piece of content, generate:
+
+- 3 Instagram reel scripts
+- 1 email newsletter
+- 10 tweet-sized insights
+- 2 LinkedIn posts
+- 1 carousel outline (don't create it, just the outline)
+
+Give me one piece at a time and wait for me to say yes before the next one.
+
+Make each one native to that platform and optimized for that platform's audience and format.` },
+
+{ id:"linkedin", cat:"Repurpose", title:"LinkedIn post from anything", tint:"rgba(157,140,255,.2)",
+  what:"Turn a video or script into a LinkedIn post that gets comments.",
+  where:"Drop the video or script on the board, then run this.",
+  pv: PV.chat("Turn this video into a LinkedIn post", "I lost 3 clients last spring.<br><br>Not because the work was bad. Because nobody knew it existed…"),
+  prompt:`Turn [THIS VIDEO / SCRIPT] into a LinkedIn post. Story first, one idea, short lines, no hashtags. End with a question that gets comments. Give me 2 versions: one personal story, one straight lesson.` },
+
+{ id:"carousel", cat:"Repurpose", title:"Carousel strategist", tint:"rgba(245,198,79,.2)",
+  what:"10 carousel angles built for your business, then the full carousel for the one you pick.",
+  where:"Add your business context and an example carousel to the board, then run this.",
+  pv:`<div class="mini"><div class="slides">
+    <div class="slide" style="background:#F5C64F"><small>01</small>The mistake costing you clients</div>
+    <div class="slide" style="background:#C4B8FF"><small>02</small>Why it happens</div>
+    <div class="slide" style="background:#FF8FC7"><small>03</small>The 3-step fix</div></div></div>`,
+  prompt:`You are an expert carousel strategist. I will give you:
+
+1. Business context
+2. An example carousel or template
+
+First, study the business, its audience, offer, positioning, and the example carousel's underlying content strategy. Then come up with 10 strong carousel angles that are highly relevant to the business. Do not create generic angles. Each angle should be specific to the business, the target audience, and what would make someone stop, swipe, save, or share.
+
+For each angle, give me:
+- A strong hook or title
+- A one-sentence explanation of the core idea
+
+Use the example carousel to understand the style, structure, and strategic approach, but do not copy its content. After I choose an angle, create the full carousel using the same strategic principles from the example while making it original and specific to the business.` },
+
+{ id:"advisor", cat:"Strategy", title:"Your personal AI advisor", tint:"rgba(157,140,255,.22)",
+  what:"Turn any mentor's books, videos and interviews into an advisor you can ask anything.",
+  where:"Load a board with everything from the person you want advice from, then run this.",
+  pv: PV.chat("Should I raise my prices?", "Yes. You're competing on price because you haven't shown proof. Here's what I'd do this week…"),
+  prompt:`You are now acting as a custom AI advisor built from the complete works, frameworks, philosophies, and teachings of the person loaded into this board.
+
+Everything you say should come from their perspective. Use their language, their frameworks, their way of thinking, their specific principles. Never give generic AI advice. Every answer should feel like it came directly from that person, based on everything they have ever written, taught, or said.
+
+When answering questions:
+- Reference specific frameworks from their work
+- Use the language and tone they actually use
+- Think through problems the way they would
+- Be as direct and specific as they would be
+- Never hedge or give vague answers
+
+You are not a general AI assistant in this chat. You are this specific person's brain, built from their life's work, available to advise on any business decision, strategy, or problem. The more is loaded into this board, the more accurately you represent them.
+
+Treat every question as if that advisor is sitting across the table from me right now, giving real, specific, no-fluff advice about my actual situation.` },
+
+{ id:"offer", cat:"Strategy", title:"Rate my offer", tint:"rgba(245,198,79,.2)",
+  what:"A score out of 10 for your offer and exactly what makes it a no-brainer.",
+  where:"Your board chat, with your Business group connected.",
+  pv: PV.score([["Promise", 7, "#4ADE97"], ["Proof", 4, "#FF8E80"], ["Guarantee", 5, "#F5C64F"], ["Urgency", 3, "#FF8E80"]], "Add a 30-day guarantee and one client result up top."),
+  prompt:`Rate my offer 1 to 10 using my Business group. Tell me exactly why it is not a 10, what would make it a no-brainer (guarantee, bonus, price, speed, proof), and rewrite the offer in one paragraph I can say on a call or put on a page.` },
+
+{ id:"funnel", cat:"Strategy", title:"Funnel audit", tint:"rgba(255,143,199,.18)",
+  what:"The three biggest conversion killers in your funnel, and the weakest part rewritten.",
+  where:"Add your landing page, emails or funnel screenshots to the board, then run this.",
+  pv: PV.score([["Headline", 4, "#FF8E80"], ["Offer", 6, "#F5C64F"], ["Proof", 3, "#FF8E80"], ["Checkout", 8, "#4ADE97"]], "Killer #1: no proof above the fold. Rewritten headline below."),
+  prompt:`Audit this funnel. Identify the three biggest conversion killers. Be specific about exactly what's causing people to drop off and why. Then rewrite the weakest element right now with improved copy.` },
+];
+
+const V = [
+{"id": "JgE_8AZ-vPE", "t": "Viral Hook Framework for IG Reels", "a": "Poppy AI", "c": "Hooks + repurposing", "d": "2026-09-30", "p": 1},
+{"id": "CQH2hlcFl5s", "t": "Automating Poppy Boards With Claude Skills", "a": "Poppy AI", "c": "Automation + API", "d": "2026-09-11"},
+{"id": "6OTT-818VCI", "t": "How I Got 42 Leads From an AI-Made Carousel", "a": "Poppy AI", "c": "Short form", "d": "2026-08-31", "p": 1},
+{"id": "2B9GCQcKUcE", "t": "How Katie Steckly Runs an Agency AND a Personal Brand Without Burning Out", "a": "Poppy AI", "c": "Success stories", "d": "2026-08-18"},
+{"id": "zpFERhPxRkM", "t": "The Only AI Tool You'll Ever Need to Blow Up on YouTube", "a": "Poppy AI", "c": "YouTube", "d": "2026-07-18"},
+{"id": "mcaJbDZS_dE", "t": "What is Poppy AI?!", "a": "Poppy AI", "c": "Getting started", "d": "2026-06-07"},
+{"id": "2b5QkHWju4M", "t": "How Creators Make $20,000/Month With Poppy AI (6-Step System)", "a": "Poppy AI", "c": "Success stories", "d": "2025-06-30"},
+{"id": "rxD0OPUQ9NQ", "t": "How Do Credits Work in Poppy AI?", "a": "Poppy AI", "c": "Getting started", "d": "2025-09-01"},
+{"id": "_bC_-BW0Z5A", "t": "How To Use Poppy AI For Content Creation", "a": "Marketing Island", "c": "Getting started", "d": "2026-09-25"},
+{"id": "6KLsURgk-qk", "t": "How to Use Poppy AI, Best AI Tool for Creators (Full Guide)", "a": "Alec Wilcock", "c": "Getting started", "d": "2026-07-01"},
+{"id": "akyGET38rdg", "t": "Steal Any Creator's IG Content System With One AI", "a": "Nicky Saunders", "c": "Short form", "d": "2026-07-01"},
+{"id": "uJgvX4DhW-M", "t": "How I Clone Viral Content Strategies in Minutes", "a": "Nancy Badillo", "c": "Hooks + repurposing", "d": "2026-02-01"},
+{"id": "YXZE2cDaYq4", "t": "How to Build A Content System in Poppy (Step-By-Step)", "a": "Simon Crowe", "c": "Getting started", "d": "2026-02-01"},
+{"id": "bFrSU3FDB10", "t": "Master Poppy AI in 21 Minutes", "a": "Eliot Prince", "c": "Getting started", "d": "2026-02-01"},
+{"id": "AH2fzv1urHU", "t": "Poppy AI Complete Tutorial for Beginners 2026 (Step By Step)", "a": "Toolysto", "c": "Getting started"},
+{"id": "Sz2Cl1jQD6k", "t": "I Tested Every AI Content Tool - Here's How to Use Poppy AI", "a": "Poppy AI", "c": "Getting started"},
+{"id": "1toJx6Jrcno", "t": "How to Use Poppy AI", "a": "Amber Figlow", "c": "Getting started"},
+{"id": "ldTo55FK2oc", "t": "Poppy AI Tutorial: Best AI tool for Content Creation", "a": "Thomas Creates", "c": "Getting started"},
+{"id": "k5FbCylmfRY", "t": "Poppy AI Review after using it for 9 months: Better Than ChatGPT?", "a": "Roboverse", "c": "Getting started"},
+{"id": "U18IAy_WmCg", "t": "This All-in-One AI Tool Will Change Your Entire YouTube Workflow!", "a": "Think Media", "c": "Getting started"},
+{"id": "VBVBspDcLQE", "t": "This AI reverse-engineers your content to go viral", "a": "Poppy AI", "c": "Short form", "p": 1},
+{"id": "aPaLMCcvXjc", "t": "The EXACT System Behind 1.6M Views on Short-Form Content", "a": "Poppy AI", "c": "Short form"},
+{"id": "mbMjOb_FOHM", "t": "Create VIRAL Content with AI", "a": "Brock Mesarich", "c": "Short form"},
+{"id": "0vc-z1kZCMY", "t": "Create Viral TikTok Content with PoppyAI", "a": "Poppy AI", "c": "Short form"},
+{"id": "ZaPfrgPAYi4", "t": "How I Create 50+ Instagram Posts in 10 Minutes with Poppy AI", "a": "Dr. Matt Shiver", "c": "Short form", "p": 1},
+{"id": "NTtksbOwS4E", "t": "How I Create Viral Content Using AI (poppy + n8n)", "a": "Michele Torti", "c": "Short form"},
+{"id": "fq-sy_XLqDo", "t": "Create Viral Videos in 10 Minutes", "a": "Robin Grundfelt", "c": "Short form"},
+{"id": "S5oOoqS97MI", "t": "This AI Writes Viral Videos in 10 Minutes", "a": "Jason Cooperson", "c": "Short form"},
+{"id": "-1y-KpRSebc", "t": "Write VIRAL Videos in 10 Minutes or LESS with Poppy AI!", "a": "Clark Gary", "c": "Short form"},
+{"id": "HmqPnEa2lQQ", "t": "This AI Tool Creates Viral Content in 10 Minutes!", "a": "Duncan Rogoff", "c": "Hooks + repurposing"},
+{"id": "aYyV_Yt6x7Q", "t": "How I use Poppy AI to learn scripts & hook templates for content creation", "a": "Kent Fai He", "c": "Hooks + repurposing"},
+{"id": "A6SzntkMX3Q", "t": "Poppy AI Content Repurposing System", "a": "Amber Figlow", "c": "Hooks + repurposing"},
+{"id": "6ezPWET1ap4", "t": "How to Repurpose Your Content with AI (Double Your Traffic)", "a": "Ryan Doser", "c": "Hooks + repurposing"},
+{"id": "0M9Q4QFadz8", "t": "Watch Me Write a Full YouTube Script in 20 Minutes Using POPPY AI", "a": "Poppy AI", "c": "YouTube"},
+{"id": "1mv2j4n6hbQ", "t": "Explaining My $20M AI YouTube Content System (So You Can Copy Me)", "a": "Poppy AI", "c": "YouTube", "p": 1},
+{"id": "d9W1rq1c3bs", "t": "I Built an AI-Powered YouTube Content System", "a": "Poppy AI", "c": "YouTube", "p": 1},
+{"id": "ENwO9zvJU1o", "t": "I Found An AI That Prints Content", "a": "Charan Singh", "c": "YouTube"},
+{"id": "zwXhj8CUOOE", "t": "This AI Tool Changes Scriptwriting FOREVER", "a": "AI Guy", "c": "YouTube"},
+{"id": "0S1AOAZlWTk", "t": "YouTube Content Planning w/Poppy AI: Plan Entire Year in 1 Hour", "a": "Meredith Marsh", "c": "YouTube", "p": 1},
+{"id": "x2GBae9e6u4", "t": "This AI Writes Viral YouTube Titles in 10 Minutes", "a": "Duncan Rogoff", "c": "YouTube"},
+{"id": "wXe0B2XZTGI", "t": "How I Make High-Performing Ads Faster Using AI", "a": "Fraser Cottrell", "c": "Ads"},
+{"id": "-VAt7hKJj1Q", "t": "How to Write 100+ AI Ads in 10 Minutes", "a": "Nathan Bentley", "c": "Ads", "p": 1},
+{"id": "M2VReAjHiN8", "t": "I found an AI tool that makes winning Facebook Ad ideas!", "a": "Ben Heath", "c": "Ads"},
+{"id": "c_6XsMe9eXE", "t": "The ULTIMATE Guide to using AI to make Facebook Ads (Full Step-by-Step Walkthrough)", "a": "Alex Cooper", "c": "Ads"},
+{"id": "dRjRWjK3AZE", "t": "How To Script WINNING Facebook Ads in 5 Minutes with Poppy AI", "a": "Ads with Cami", "c": "Ads"},
+{"id": "wP0fEPGAsRs", "t": "How I Make Ai Ad Creatives FAST", "a": "Fraser Cottrell", "c": "Ads"},
+{"id": "3qQO286O7WY", "t": "I Got AI To Make KILLER Meta Ads in 10 Minutes", "a": "Ads with Cami", "c": "Ads"},
+{"id": "9SiwA6-aDbM", "t": "How I Built an AI-Powered Email Marketing System Using Poppy AI", "a": "Grayson Creates", "c": "Email", "p": 1},
+{"id": "Dn4U0n8p_H0", "t": "This AI Tool Writes Killer Cold Emails", "a": "Follow Ups", "c": "Email"},
+{"id": "oAWe5wFwHlo", "t": "I Deep-Personalized 1000+ Cold Emails Using THIS AI System", "a": "Nick Saraev", "c": "Email"},
+{"id": "8nXifPiqADY", "t": "The NEW Way to Write Newsletters Using AI", "a": "Eddy Ballesteros", "c": "Email"},
+{"id": "D7YV8QRYDgk", "t": "The Secret AI Tool Everyone Sleeps On", "a": "Eddy Ballesteros", "c": "Email"},
+{"id": "yFHQnjmPEnM", "t": "This AI Tool Can Help You 10x You As A Marketer", "a": "Poppy AI", "c": "Email"},
+{"id": "I1slu0REi1Y", "t": "This AI Writes Viral LinkedIn Posts in 10 Minutes", "a": "Poppy AI", "c": "LinkedIn", "p": 1},
+{"id": "q_B3Ste69eI", "t": "How I Grow my Linkedin following with Poppy AI and n8n", "a": "Samin Yasar", "c": "LinkedIn"},
+{"id": "FgP_AEfnfok", "t": "How to Automate ANY Content with Poppy and n8n (no code)", "a": "Nate Herk", "c": "Automation + API"},
+{"id": "pOFubd9k4Lg", "t": "I HATE EMAILS… So I Built An AI with Poppy That Replies For Me", "a": "Poppy AI", "c": "Automation + API"},
+{"id": "Ad8WwmU_cZY", "t": "How Poppy AI Automated My Entire Client Acquisition System: Here's What Happened", "a": "RC Simon", "c": "Automation + API"},
+{"id": "oeV6RJ-8Enc", "t": "We just launched APIs...🎉", "a": "Poppy AI", "c": "Automation + API"},
+{"id": "RDVEQf9xTdA", "t": "What Can You Do with Poppy APIs?!", "a": "Poppy AI", "c": "Automation + API"},
+{"id": "7y8z7bboFV4", "t": "The Exact Poppy AI Workflow That's Generating $160K Monthly", "a": "Poppy AI", "c": "Success stories", "p": 1},
+{"id": "S7u2qWVsSVs", "t": "How Lucas is Making $100k/mo with Poppy AI in ways that nobody is talking about", "a": "Poppy AI", "c": "Success stories"},
+{"id": "kCiKQHg2gWc", "t": "How Renzo Made over $10K in 24 Hours with 1 YouTube Video Using Poppy AI", "a": "Poppy AI", "c": "Success stories", "p": 1},
+{"id": "cRmoR5TVHv8", "t": "How Kevin Made $75,000 with Poppy AI", "a": "Poppy AI", "c": "Success stories", "p": 1},
+{"id": "o49BlkBF7r8", "t": "How this full-time teacher made $23K as a paddle coach", "a": "Poppy AI", "c": "Success stories", "p": 1},
+{"id": "4nar19VaL64", "t": "The Brutal Truth About Building A Startup from $0 to $100k/mo", "a": "Poppy AI", "c": "Success stories"},
+{"id": "_k66Qfj_LBE", "t": "Testimonial - How Morgan (VA) Uses Poppy to 10x Her Biz Workflow", "a": "Poppy AI", "c": "Success stories", "p": 1},
+{"id": "V5ych2rxtnQ", "t": "Literally the ONLY AI Tool Creators Need Right Now", "a": "Pat Flynn", "c": "Success stories", "p": 1}
+];
+const SHOT = /[?&]shot=1/.test(location.search); if (SHOT) document.documentElement.style.scrollBehavior = "auto";
+const H = "https://intercom.help/poppy-ai/en/articles/";
+const FAQ = [
+{ e:"👀", t:"Can Poppy actually see the video I added?", k:"see video read watch connected attached transcript", a:`<p>Yes, if it's connected to that chat. Poppy reads what's plugged into the chat: a video's transcript, a doc's text, a page's copy. If there's no line from the item to the chat, that chat can't see it.</p>
+<p>Quick check: ask the chat "summarize what's connected to you in 3 bullets". If it can, you're good. <a href="${H}11529424-content-integration" target="_blank" rel="noopener">What you can add</a></p>` },
+{ e:"⚡", t:"Why am I burning through credits so fast?", k:"credits save cheap usage burn", a:`<ol>
+<li><b>Extract, then connect.</b> Don't hook a 50-minute video or a long PDF straight to your main chat. Run it through a side chat, ask for only the part you need, paste that into a text box (<kbd>T</kbd>) and connect the text box instead.</li>
+<li><b>Only connect what this chat needs.</b> Everything connected gets read on every message, even for a simple question.</li>
+<li><b>Fresh chat for each new idea.</b> Long chat histories cost more per message. Save the good stuff to a text box and start clean.</li>
+<li><b>Keep the back and forth going.</b> For about 5 minutes after a message, follow-ups cost less because Poppy holds onto what it already read.</li>
+<li><b>Pick the right model and thinking level.</b> A lighter model and Low or Instant thinking are fine for quick stuff. Save High and Extra High for the heavy work.</li></ol>
+<p>Full guide: <a href="${H}11465826-troubleshooting-high-credit-usage" target="_blank" rel="noopener">Troubleshooting high credit usage</a></p>` },
+{ e:"🪙", t:"What actually costs credits?", k:"credits use cost what", a:`<p>Only chatting with the AI. Uploading files, building boards, organizing, none of that touches your credits.</p>
+<p>What a message costs comes down to three things: <b>how much text is connected</b> (think transcript length, not video length), <b>the model you pick</b>, and <b>how long the chat already is</b>.</p>
+<p><a href="${H}11465762-understanding-credits" target="_blank" rel="noopener">Understanding credits</a> · <a href="#" data-v="rxD0OPUQ9NQ">▶ Watch: how credits work (6 min)</a></p>` },
+{ e:"🔄", t:"When do my credits come back?", k:"credits reset rollover month", a:`<p>They reset on the 1st of every month and don't roll over, so use them. Hover your credit number in the top right of Poppy to see where you're at.</p>` },
+{ e:"🪫", t:"I'm out of credits. What now?", k:"credits out more boost upgrade limit", a:`<p>Your boards still work, you just can't prompt until you add credits or the month resets. Two ways to get more:</p>
+<ul><li><b>Upgrade</b> with the Upgrade button: Starter 4,000, Creator 8,000, Power User 16,000 credits a month.</li>
+<li><b>A one-time credit boost</b> from the support chat inside Poppy. It lasts 30 days from purchase plus until the next reset.</li></ul>
+<p>Or text me and I'll help you figure out which makes sense.</p>` },
+{ e:"🧠", t:"Which model should I pick?", k:"model gpt claude gemini which thinking", a:`<p>Match the model to the job. A fast, light model for quick questions and short rewrites. A bigger model when you're feeding it long transcripts or need deep writing. The Thinking level works the same way: more thinking, better answer, more credits.</p>
+<p><a href="${H}11465596-ai-models-guide" target="_blank" rel="noopener">AI models guide</a> · <a href="${H}14590938-understanding-thinking-modes" target="_blank" rel="noopener">Thinking modes</a></p>` },
+{ e:"🫠", t:"Why is my chat getting worse the longer I use it?", k:"memory forget worse long chat ignore", a:`<p>Poppy reads your recent messages first, then what's connected. In a really long chat, the early stuff gets buried.</p>
+<p>The fix: move anything important (rules, your voice, a winning script) into a text box, start a new chat, connect the text box. <b>Your board is the memory, chats are the workspace.</b></p>
+<p><a href="${H}11158087-how-poppy-s-memory-actually-works" target="_blank" rel="noopener">How Poppy's memory works</a></p>` },
+{ e:"🙉", t:"Why does it keep ignoring what I tell it?", k:"ignore instructions not listening wrong output", a:`<p>90% of the time it's what's connected, not the AI. Check for old or conflicting notes on the board and unplug anything that isn't for this job. Then use the feedback trick: ask the chat why it missed and how you should have asked.</p>
+<p><a href="${H}11466955-when-your-chat-isn-t-listening-use-the-feedback-prompt" target="_blank" rel="noopener">The feedback prompt</a></p>` },
+{ e:"🗣️", t:"How do I make it sound like me, not like AI?", k:"voice brand tone sound like me", a:`<p>Give it real samples of you: transcripts of your best videos, your posts, your emails. Then set up a Brand Voice so every chat writes like you. And talk to it with the mic, your natural way of speaking comes through.</p>
+<p>The <a href="#prompts" data-jump="voice">Brand voice prompt</a> in this vault does the heavy lifting. Guide: <a href="${H}15411812-brand-voices-in-poppy" target="_blank" rel="noopener">Brand voices in Poppy</a></p>` },
+{ e:"🌐", t:"Can it look things up on the internet?", k:"internet browse research current news perplexity", a:`<p>Your chats only know what you connect to them and the chat's own history, which is what keeps answers on point. When you need fresh info from the web, use Perplexity inside Poppy.</p>
+<p><a href="${H}13752904-perplexity-in-poppy" target="_blank" rel="noopener">Perplexity in Poppy</a></p>` },
+{ e:"🔗", t:"What can I drop onto a board?", k:"add youtube tiktok instagram pdf loom notion links content", a:`<p>YouTube, TikTok, Instagram and LinkedIn links, whole profiles, PDFs, docs, images, voice memos, Loom videos and Notion pages. Poppy pulls the transcript or text so your chats can use it.</p>
+<p><a href="${H}11529424-content-integration" target="_blank" rel="noopener">Content integration</a> · <a href="${H}13754218-profiles-in-poppy" target="_blank" rel="noopener">Profiles</a></p>` },
+{ e:"⏳", t:"It's stuck on thinking or threw an error", k:"stuck thinking error overload broken loading", a:`<p>First, a hard refresh (<kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>R</kbd> on Mac, <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>R</kbd> on Windows). If you see an Overload limit, you've connected more than that model can read: trim what's connected or switch to a bigger model.</p>
+<p><a href="${H}11511245-when-your-chat-gets-stuck-thinking-or-doesn-t-respond-to-your-prompts" target="_blank" rel="noopener">Stuck thinking</a> · <a href="${H}14025721-chat-errors-what-they-mean-how-to-fix-them" target="_blank" rel="noopener">Chat errors</a> · <a href="${H}11465857-troubleshooting-overload-limits" target="_blank" rel="noopener">Overload limits</a></p>` },
+{ e:"🗑️", t:"I deleted something. Can I get it back?", k:"deleted recover undo version board archive", a:`<p>Breathe, it's recoverable. Version control brings back deleted content on a board, and deleted boards sit in their own spot.</p>
+<p><a href="${H}11558621-version-control-recover-deleted-content" target="_blank" rel="noopener">Recover deleted content</a> · <a href="${H}11723504-deleted-archived-boards" target="_blank" rel="noopener">Deleted boards</a></p>` },
+{ e:"♻️", t:"How do I reuse my best stuff on other boards?", k:"vault reuse copy duplicate template", a:`<p>Save it to a Vault once and drop it into any board, no copy and paste. Or turn a whole board into a template you can duplicate.</p>
+<p><a href="${H}16529562-vaults-reuse-content-across-boards-without-copy-pasting" target="_blank" rel="noopener">Vaults</a> · <a href="${H}13753466-creating-and-sharing-templates-in-poppy" target="_blank" rel="noopener">Templates</a> · <a href="${H}11506498-copy-duplicate-boards" target="_blank" rel="noopener">Duplicate boards</a></p>` },
+{ e:"👥", t:"Can my team or VA work in my boards?", k:"team va share collaborate seats", a:`<p>Yes. Invite people to a board to work on it together, or set up a team account so everyone has their own seat.</p>
+<p><a href="${H}11542923-board-collaboration" target="_blank" rel="noopener">Board collaboration</a> · <a href="${H}15950377-team-accounts" target="_blank" rel="noopener">Team accounts</a></p>` },
+{ e:"⌨️", t:"Any shortcuts to move faster?", k:"shortcuts keyboard faster text box", a:`<p>The one you'll use most: <kbd>T</kbd> drops a text box. There's a full list of board shortcuts, multi-select and grouping too.</p>
+<p><a href="${H}10528305-poppy-ai-shortcuts" target="_blank" rel="noopener">Shortcuts</a> · <a href="${H}13363697-multi-selecting" target="_blank" rel="noopener">Multi-select + groups</a></p>` },
+{ e:"💳", t:"Where's my plan and billing?", k:"billing plan invoice card payment account", a:`<p>It's all under your account settings in Poppy. If anything looks off, text me before you do anything else and I'll sort it out.</p>
+<p><a href="${H}11546970-how-to-access-your-billing-information" target="_blank" rel="noopener">Billing info</a> · <a href="${H}11428985-pricing-options" target="_blank" rel="noopener">Plans</a></p>` },
+];
+const BOARDS = [
+["muddy-blossom-QDzc9","Killian's Ads Demo","Meta ads from research to finished scripts. The board we demo ads with.",1],
+["morning-fog--_H_O","Mo's Demo Board","Every Poppy use case in one place. The board our team demos with on calls.",1],
+["hidden-tree-pFmSi","Killian's LinkedIn Board","Viral LinkedIn posts in your voice, from idea to post.",1],
+["weathered-shadow-RXKtl","Viral Reels & TikTok","Short-form hooks and scripts built from what's already going viral.",1],
+["elegant-waterfall-pgHmq","Sawyer's VSL Board","Craft Your Winning VSL by Sawyer Vertz: a video sales letter that sells, step by step.",1],
+["hidden-cloud-aJ0ZG","ICP Development","Nail exactly who you sell to before you write a word.",1],
+["mighty-night-xecPU","The Viral Reels Generator","Reels scripts that hit, from proven viral formats."],
+["crimson-field-WlGzk","Viral YouTube Titles & Scripts","Long-form titles and full scripts for YouTube."],
+["wonderful-butterfly-MzzMF","The Viral YT Generator","Ideas, titles and scripts for your channel."],
+["festive-sun-SzDEm","Bryan Ng YouTube Scriptwriting","Script like a creator with 50M+ long-form views."],
+["late-reef-4noCH","YouTube Starter","Everything you need to launch or relaunch a channel."],
+["lingering-bird-bGVuj","Viral Facebook Ads","Ad angles and scripts that stop the scroll."],
+["frosty-dream-HsMDK","Short Form Content System","A repeatable system for daily short-form."],
+["quiet-snow-aAcTa","Viral Carousel System","Carousels that get saved and shared."],
+["late-bush-5e2K8","Newsletter Machine","Turn a podcast or YouTube video into an email draft."],
+["crimson-cloud-1s4Mr","Sales Page Copywriter","Write the page that turns visitors into buyers."],
+["broken-sky-KfSuH","Voice Clone","Teach Poppy to write exactly like you."],
+["solitary-wind-fzHFu","Sales Call Analysis","Break down your calls and find what closes."],
+];
+const HC = [
+["👥","The Poppy community","Our Skool group: weekly calls, recordings and other creators","SKOOL"],
+["🔌","Poppy API Hub","Docs and examples for building on Poppy's API","APIHUB"],
+["🚀","Getting started","The 3 things you need to know","12325324-getting-started"],
+["🪙","Understanding credits","What uses them and how to track it","11465762-understanding-credits"],
+["🧠","AI models guide","When to use which model","11465596-ai-models-guide"],
+["🗣️","Brand voices","Outputs that sound like you","15411812-brand-voices-in-poppy"],
+["🧩","Board organization","Groups, text boxes and notes","11529386-board-organization"],
+["🎙️","Voice memos","Talk like a human, get human results","11529289-voice-memos-audio-content-talk-like-a-human-get-human-results"],
+["🖼️","Carousels","Multiple slides in one shot","15060926-carousels-create-multiple-slides-in-one-shot"],
+["🎨","Image generation","Make visuals inside Poppy","12111710-image-generation-in-poppy"],
+["📞","Weekly community calls","Recordings in our Skool community","11436270-weekly-community-calls"],
+];
+
+/* ---------- render ---------- */
+const $ = (s) => document.querySelector(s);
+const pulse = (e, d) => { try { window.__pulse && window.__pulse(e, d); } catch (x) {} };
+// prompts
+const CATS = ["All", ...[...new Set(P.map((p) => p.cat))]];
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const mark = (s) => esc(s).replace(/\[([^\]]+)\]/g, "<mark>[$1]</mark>");
+const grid = $("#grid"), bar = $("#bar"), toast = $("#toast");
+grid.innerHTML = P.map((p, i) => `<article class="card" data-cat="${p.cat}" id="${p.id}">
+  <div class="pv" style="--tint:${p.tint}">${p.pv}</div>
+  <div class="body"><div class="meta"><span class="tag">${p.cat}</span>${p.top ? '<span class="tag top">⭐ Most used</span>' : ""}<span class="num">${String(i + 1).padStart(2, "0")}</span></div>
+    <h3>${p.title}</h3><p class="what">${p.what}</p><p class="where"><b>Where to run it:</b> ${p.where}</p>
+    <details><summary>See the prompt</summary><pre>${mark(p.prompt)}</pre></details>
+    <button class="copy" data-i="${i}">⧉ Copy prompt</button></div></article>`).join("");
+bar.innerHTML = CATS.map((c, i) => `<button class="${i ? "" : "on"}" data-c="${c}">${c}<em>${c === "All" ? P.length : P.filter((p) => p.cat === c).length}</em></button>`).join("");
+let pCat = "All", pAll = false;
+function pRender() { let n = 0; grid.querySelectorAll(".card").forEach((c) => { const ok = pCat === "All" || c.dataset.cat === pCat;
+  c.classList.toggle("hide", !(ok && (pAll || pCat !== "All" || n < 6))); if (ok) n++; });
+  $("#pmorew").style.display = pCat === "All" && !pAll ? "" : "none"; $("#pmore").textContent = `Show all ${P.length} prompts ↓`; }
+bar.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; bar.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b)); pCat = b.dataset.c; pRender(); });
+$("#pmore").addEventListener("click", () => { pAll = true; pRender(); });
+pRender();
+if (location.hash && document.querySelector(location.hash + ".card")) { pAll = true; pRender(); }
+let tT; grid.addEventListener("click", async (e) => { const b = e.target.closest(".copy"); if (!b) return; const p = P[+b.dataset.i];
+  try { await navigator.clipboard.writeText(p.prompt); } catch (x) { const t = document.createElement("textarea"); t.value = p.prompt; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); }
+  b.classList.add("done"); b.textContent = "✓ Copied"; setTimeout(() => { b.classList.remove("done"); b.textContent = "⧉ Copy prompt"; }, 1600);
+  toast.classList.add("show"); clearTimeout(tT); tT = setTimeout(() => toast.classList.remove("show"), 1800);
+  pulse("prompt_copy", { id: p.id }); });
+
+// videos
+const VC = [PK, "🆕 Newest", "All", ...[...new Set(V.map((v) => v.c))]];
+let vCat = PK, vAll = false;
+const vgrid = $("#vgrid"), vmore = $("#vmore");
+const NEWCUT = "2026-07-01"; const NEWEST = V.filter((v) => v.d).sort((a, b) => b.d.localeCompare(a.d)).map((v) => v.id);
+vgrid.innerHTML = V.map((v) => `<div class="v" data-v="${v.id}" data-c="${v.c}"${v.d ? ` data-d="${v.d}"` : ""}${v.p ? ' data-p="1"' : ""}><div class="th"><img src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy">${v.p ? '<span class="pick">⭐ ' + (VR ? 'Top pick' : 'Mo\'s pick') + '</span>' : v.d && v.d >= NEWCUT ? '<span class="pick new">🆕 New</span>' : ""}</div><div class="vb"><b>${esc(v.t)}</b><span>${esc(v.a)} · ${v.c}</span></div></div>`).join("");
+$("#vchips").innerHTML = VC.map((c, i) => `<button class="${i ? "" : "on"}" data-c="${c}">${c}<em>${c === "All" ? V.length : c === PK ? V.filter((v) => v.p).length : c === "🆕 Newest" ? NEWEST.length : V.filter((v) => v.c === c).length}</em></button>`).join("");
+function vRender() { let n = 0; vgrid.querySelectorAll(".v").forEach((el) => {
+  const ok = vCat === "All" ? true : vCat === PK ? !!el.dataset.p : vCat === "🆕 Newest" ? !!el.dataset.d : el.dataset.c === vCat;
+  el.style.order = vCat === "🆕 Newest" ? NEWEST.indexOf(el.dataset.v) : "";
+  const show = ok && (vAll || vCat !== "All" || n < 12); if (ok) n++; el.classList.toggle("hide", !show); });
+  vmore.parentElement.style.display = vCat === "All" && !vAll && n > 12 ? "" : "none"; }
+$("#vchips").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; vCat = b.dataset.c; vAll = false;
+  $("#vchips").querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b)); vRender(); });
+vmore.addEventListener("click", () => { vAll = true; vRender(); });
+vmore.textContent = "Show all videos ↓"; vRender();
+// 🆕 keep checking: any Poppy channel upload we have not hand-placed shows up under Newest on its own
+const SKIP = new Set(["C57GNmx_XlM", "3lX14RnASpw", "r_7J7wR-5nw", "T1HMzZwbuqg"]); // not how-tos, or a twin of one we have
+fetch("https://getpoppy.ai/api/vault-videos").then((r) => r.json()).then(({ videos = [] }) => {
+  const have = new Set(V.map((v) => v.id)), fresh = videos.filter((v) => !have.has(v.id) && !SKIP.has(v.id));
+  if (!fresh.length) return;
+  fresh.forEach((v) => { const n = { id: v.id, t: v.t, a: "Poppy AI", c: "Poppy channel", d: v.d }; V.push(n); NEWEST.push(v.id); });
+  NEWEST.sort((a, b) => V.find((x) => x.id === b).d.localeCompare(V.find((x) => x.id === a).d));
+  vgrid.insertAdjacentHTML("beforeend", fresh.map((v) => `<div class="v" data-v="${v.id}" data-c="Poppy channel" data-d="${v.d}"><div class="th"><img src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy"><span class="pick new">🆕 New</span></div><div class="vb"><b>${esc(v.t)}</b><span>Poppy AI · just posted</span></div></div>`).join(""));
+  const nb = [...document.querySelectorAll("#vchips button")].find((b) => b.dataset.c === "🆕 Newest"); if (nb) nb.querySelector("em").textContent = NEWEST.length;
+  vRender();
+}).catch(() => {});
+// PK hides the more button; offer a jump to All
+const modal = $("#modal");
+function openV(id) { const v = V.find((x) => x.id === id) || { t: "How to use Poppy", a: "Poppy AI" };
+  $("#mfr").innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  $("#mtt").textContent = v.t; $("#mta").textContent = v.a; $("#myt").href = "https://www.youtube.com/watch?v=" + id;
+  modal.classList.add("open"); document.body.style.overflow = "hidden"; pulse("vault_video", { id }); }
+function closeV() { modal.classList.remove("open"); $("#mfr").innerHTML = ""; document.body.style.overflow = ""; }
+document.addEventListener("click", (e) => { const v = e.target.closest("[data-v]"); if (v) { e.preventDefault(); openV(v.dataset.v); } });
+$("#mx").onclick = closeV; modal.addEventListener("click", (e) => { if (e.target === modal) closeV(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeV(); });
+
+// answers
+const GROUPS = [
+  ["🪙", "Credits", ["burning", "costs credits", "come back", "out of credits"]],
+  ["🎯", "Getting good results", ["see the video", "model", "getting worse", "ignoring", "sound like me", "internet", "drop onto"]],
+  ["🛠️", "When something breaks", ["stuck", "deleted", "reuse"]],
+  ["👥", "Account & team", ["team or VA", "shortcuts", "billing"]],
+];
+const qHtml = (f) => `<details class="q" data-k="${(f.t + " " + f.k).toLowerCase()}"><summary><span class="e">${f.e}</span>${f.t}</summary><div class="a">${f.a}</div></details>`;
+const placed = new Set();
+const groupHtml = GROUPS.map(([e, name, keys]) => { const items = FAQ.filter((f) => !placed.has(f) && keys.some((k) => f.t.toLowerCase().includes(k.toLowerCase())));
+  items.forEach((f) => placed.add(f));
+  return `<div class="grp rv"><h4>${e} ${name}<span>${items.length}</span></h4>${items.map(qHtml).join("")}</div>`; });
+const rest = FAQ.filter((f) => !placed.has(f));
+if (rest.length) groupHtml.push(`<div class="grp rv"><h4>💡 More<span>${rest.length}</span></h4>${rest.map(qHtml).join("")}</div>`);
+$("#faq").innerHTML = groupHtml.join("");
+$("#faq").addEventListener("toggle", (e) => { if (e.target.open) document.querySelectorAll("#faq .q[open]").forEach((d) => d !== e.target && (d.open = false)); }, true);
+$("#qs").addEventListener("input", (e) => { const q = e.target.value.trim().toLowerCase(); let n = 0;
+  document.querySelectorAll(".q").forEach((d) => { const ok = !q || q.split(/\s+/).every((w) => d.dataset.k.includes(w) || d.textContent.toLowerCase().includes(w)); d.classList.toggle("hide", !ok); if (ok) n++; if (q && ok && n === 1) d.open = true; });
+  document.querySelectorAll(".grp").forEach((g) => g.classList.toggle("hide", !g.querySelector(".q:not(.hide)")));
+  $("#none").style.display = n ? "none" : "block"; });
+document.addEventListener("click", (e) => { const a = e.target.closest("[data-jump]"); if (!a) return; e.preventDefault();
+  const el = document.getElementById(a.dataset.jump); if (el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.querySelector("details")?.setAttribute("open", ""); } });
+
+// boards
+$("#boards").innerHTML = BOARDS.map(([b, name, desc, pick]) => (name = VR && name === "Mo's Demo Board" ? "Poppy Demo Board" : name, 0) || `<a class="tile board rv" href="https://app.getpoppy.ai/boards/${b}" target="_blank" rel="noopener"><div class="mini-b"><img src="assets/boards/${b}.jpg" alt="${esc(name)} board" loading="lazy" onerror="this.style.visibility='hidden'">${pick ? '<span class="bpick">⭐ ' + (VR ? 'Top pick' : 'Mo\'s pick') + '</span>' : ""}</div><b>${name}</b><span>${desc}</span></a>`).join("");
+// help center
+const HREF = { SKOOL: "https://www.skool.com/getpoppyai", APIHUB: "https://poppy-api-hub.vercel.app/" };
+$("#hc").innerHTML = HC.map(([e, t, d, s]) => `<a class="tile rv${HREF[s] ? " hot" : ""}" href="${HREF[s] || H + s}" target="_blank" rel="noopener"><div class="ic">${e}</div><b>${t}</b><span>${d}</span></a>`).join("");
+
+/* 🎬 JOEY'S VAULT LAYOUT (Joey 2026-10-04: "the top creators we've worked with should be at the forefront, more marketing and
+   indoctrination, the strategy is already in the Skool course"). Only on /prompts/joey (VR.light). Order: hero → the Academy (step 1) →
+   creator videos → start here → prompts → answers → templates → help → level up. Fewer filters, fewer tiles, line icons, no emoji. */
+if (VR && VR.light) (function () {
+  const EMO = /\p{Extended_Pictographic}️?\s*/gu;
+  const ICO = { users: "M16 19v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 17.5V19M10 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM20 19v-1.5a3.5 3.5 0 0 0-2.5-3.35M15.5 5.15a3 3 0 0 1 0 5.7",
+    video: "M4 7h11v10H4zM15 10.5l5-3v9l-5-3", code: "M9 8l-4 4 4 4M15 8l4 4-4 4", play: "M8 5.5v13l10-6.5z", board: "M4 4.5h7v7H4zM13 4.5h7v4h-7zM13 10.5h7v9h-7zM4 13.5h7v6H4z",
+    mic: "M12 4a3 3 0 0 1 3 3v4a3 3 0 0 1-6 0V7a3 3 0 0 1 3-3zM6 11a6 6 0 0 0 12 0M12 17v3", target: "M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" };
+  const ic = (n) => `<svg class="vic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${ICO[n]}"/></svg>`;
+  const hero = document.querySelector(".vhero");
+  // 1 · the Academy, step one
+  hero.insertAdjacentHTML("afterend", `<section class="acad rv"><div class="ac-l"><span class="k">Step 1</span><h2>Join the Viral Content Academy</h2><p>The full strategy lives here: short-form, long-form, hooks to posting, live coach calls and the people doing what you're doing.</p></div><a class="btn main ac-go" href="${HREF.SKOOL}" target="_blank" rel="noopener">Join the Academy<span class="r">→</span></a></section>`);
+  // 2 · creators first: the videos come right after the Academy, opening on the creators we've worked with
+  const vids = document.getElementById("videos"); document.querySelector(".acad").after(vids);
+  const sh = vids.querySelector(".sh"); sh.querySelector(".k").textContent = "01 · The creators"; sh.querySelector("h2").textContent = "Top creators, built on Poppy";
+  sh.querySelector("p").textContent = "Creators we've worked with, showing exactly how they use Poppy. Plus real customers and their results.";
+  const TOP = ["Pat Flynn", "Think Media", "Nick Saraev", "Nate Herk", "Meredith Marsh", "Dr. Matt Shiver", "Brock Mesarich", "Ben Heath", "Grayson Creates", "Nathan Bentley", "Ryan Doser", "Alex Cooper"];
+  const rank = (a) => { const i = TOP.indexOf(a); return i < 0 ? 99 : i; };
+  const byId = Object.fromEntries(V.map((v) => [v.id, v]));
+  const isCre = (v) => v && v.a !== "Poppy AI", isWin = (v) => v && v.c === "Success stories", isHow = (v) => v && v.a === "Poppy AI" && v.c !== "Success stories";
+  const VG = [["Creators", isCre], ["Success stories", isWin], ["How-tos", isHow], ["All", () => true]];
+  $("#vchips").innerHTML = VG.map(([c, f], i) => `<button class="${i ? "" : "on"}" data-c="${c}">${c}<em>${V.filter(f).length}</em></button>`).join("");
+  vCat = "Creators";
+  vRender = function () { const f = (VG.find((g) => g[0] === vCat) || VG[0])[1]; let n = 0;
+    const els = [...vgrid.querySelectorAll(".v")].filter((el) => f(byId[el.dataset.v]));
+    els.sort((a, b) => vCat === "Creators" ? rank(byId[a.dataset.v].a) - rank(byId[b.dataset.v].a) : 0);
+    vgrid.querySelectorAll(".v").forEach((el) => { el.classList.add("hide"); el.style.order = ""; });
+    els.forEach((el, i) => { el.style.order = i; el.classList.toggle("hide", !(vAll || i < 8)); n++; });
+    vmore.parentElement.style.display = !vAll && n > 8 ? "" : "none"; vmore.textContent = "See all " + n + " videos ↓"; };
+  vRender();
+  // 3 · prompts: four groups instead of nine
+  const PG = { Hooks: ["Hooks"], Scripts: ["Scripts", "Repurpose", "Voice"], Ideas: ["Ideas", "Planning"], Strategy: ["Analyze", "Strategy"] };
+  bar.innerHTML = ["All", ...Object.keys(PG)].map((c, i) => `<button class="${i ? "" : "on"}" data-c="${c}">${c}<em>${c === "All" ? P.length : P.filter((p) => PG[c].includes(p.cat)).length}</em></button>`).join("");
+  pRender = function () { let n = 0; grid.querySelectorAll(".card").forEach((c) => { const ok = pCat === "All" || (PG[pCat] || []).includes(c.dataset.cat);
+    c.classList.toggle("hide", !(ok && (pAll || pCat !== "All" || n < 6))); if (ok) n++; });
+    $("#pmorew").style.display = pCat === "All" && !pAll ? "" : "none"; $("#pmore").textContent = `Show all ${P.length} prompts ↓`; };
+  pRender();
+  // "where to run it" in plain words
+  grid.querySelectorAll(".where").forEach((w) => { w.innerHTML = w.innerHTML.replace(/,\s*with [^.]*?connected\./i, ".").replace(/Expert Brain,?\s*/g, ""); });
+  // 4 · help: only what isn't on the page already
+  const KEEP = { "The Poppy community": "users", "Weekly community calls": "video", "Poppy API Hub": "code", "Getting started": "play" };
+  $("#hc").querySelectorAll(".tile").forEach((t) => { const k = t.querySelector("b").textContent.trim(); if (!KEEP[k]) t.remove(); else t.querySelector(".ic").innerHTML = ic(KEEP[k]); });
+  // 5 · templates: six, then all
+  const bt = [...document.querySelectorAll("#boards .tile")]; if (bt.length > 6) { bt.slice(6).forEach((t) => t.classList.add("bhide"));
+    document.getElementById("boards").insertAdjacentHTML("afterend", `<div class="more"><button class="ghost" id="bmore">See all ${bt.length} boards ↓</button></div>`);
+    document.getElementById("bmore").addEventListener("click", (e) => { bt.forEach((t) => t.classList.remove("bhide")); e.target.parentElement.remove(); }); }
+  // 6 · level up: the three that fit an onboarding (done-with-you, credits, seats), one row, one colour
+  const lu = document.querySelector("#level-up .lvl"); document.querySelectorAll("#level-up .lv.c1, #level-up .lv.c2").forEach((x) => x.remove());
+  document.querySelectorAll("#level-up .lvl.two .lv").forEach((x) => lu.appendChild(x)); document.querySelector("#level-up .lvl.two")?.remove();
+  // 7 · line icons for the three rules, no emoji anywhere
+  const LAW = ["board", "mic", "target"]; document.querySelectorAll(".law i").forEach((i, n) => { i.innerHTML = ic(LAW[n] || "board"); });
+  document.querySelectorAll(".eyebrow, .lane small, .lv .t, .close .btn, .mo .btn, .nav .cta, .ask").forEach((el) => el.childNodes.forEach((t) => { if (t.nodeType === 3) t.textContent = t.textContent.replace(EMO, ""); }));
+  document.querySelectorAll(".q summary .e").forEach((e) => e.remove());
+  // the section labels count in the new order; the nav follows it
+  document.querySelectorAll("section.sec .sh .k").forEach((k, i) => { k.textContent = k.textContent.replace(/^\d+\s*·\s*/, String(i + 1).padStart(2, "0") + " · "); });
+  const vl = document.querySelector('#links a[href="#videos"]'); if (vl) { vl.textContent = "Creators"; vl.parentElement.prepend(vl); }
+})();
+// nav highlight + reveal
+const secs = [...document.querySelectorAll("section.sec")], links = [...document.querySelectorAll("#links a")];
+const io = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { const id = en.target.id; links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + id)); } }), { rootMargin: "-45% 0px -50% 0px" });
+secs.forEach((s) => io.observe(s));
+const ro = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); ro.unobserve(en.target); } }), { threshold: .08 });
+document.querySelectorAll(".rv").forEach((el) => SHOT ? el.classList.add("in") : ro.observe(el));
+document.addEventListener("click", (e) => { const a = e.target.closest('a[href^="sms:"],a[href^="mailto:"],a[href*="calendly"]'); if (a) pulse("vault_contact", { href: a.getAttribute("href").slice(0, 60) }); });
+if (location.hash) { const el = document.querySelector(location.hash); if (el) setTimeout(() => el.scrollIntoView({ behavior: SHOT ? "auto" : "smooth", block: el.classList.contains("card") ? "center" : "start" }), 250); }
+</script>
+</body>
+</html>
